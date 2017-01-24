@@ -98,13 +98,13 @@ namespace Ts3Api {
 
     Client getClientByNickname(string nickname);
 
-    //Group getServerGroupById(string id);
+    Group getServerGroupById(string id);
 
-    //Group getServerGroupByName(string name);
+    Group getServerGroupByName(string name);
 
-    //Group getChannelGroupById(string id);
+    Group getChannelGroupById(string id);
 
-    //Group getChannelGroupByName(string name);
+    Group getChannelGroupByName(string name);
   };
 }
 #endif

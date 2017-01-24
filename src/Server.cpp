@@ -361,3 +361,37 @@ ts3Response Server::login(string login, string password) {
 ts3Response Server::selectServer(string port) {
   return executeCommand("use port="+port);
 }
+
+Group Server::getServerGroupById(string id) {
+  return Group(*this, id, Group::SERVER);
+}
+
+Group Server::getServerGroupByName(string name) {
+  map<string, map<string, string>> groupList;
+  auto response = executeCommand("servergrouplist");
+  if(response.error) return Group(*this, "unknown");
+
+  split(groupList, response.data, "name");
+
+  if(groupList.find(name) != groupList.end())
+    return Group(*this, groupList[name]["cgid"], Group::CHANNEL);
+  else
+    return Group(*this, "unknown");
+}
+
+Group Server::getChannelGroupById(string id) {
+  return Group(*this, id, Group::CHANNEL);
+}
+
+Group Server::getChannelGroupByName(string name) {
+  map<string, map<string, string>> groupList;
+  auto response = executeCommand("channelgrouplist");
+  if(response.error) return Group(*this, "unknown");
+
+  split(groupList, response.data, "name");
+
+  if(groupList.find(name) != groupList.end())
+    return Group(*this, groupList[name]["cgid"], Group::CHANNEL);
+  else
+    return Group(*this, "unknown");
+}
