@@ -15,7 +15,7 @@ To do this, follow these steps:
 3. Modify your build command adding -I parameter with path to folder with API header files and -l parameter with name of library file. For example ``g++ -I./includeTs3Api -lteamspeak-api main.cpp -o my_program``
 
 ## Connecting to server
-```
+```C++
 #include <Server.hpp>
 #include <iostream>
 
@@ -50,7 +50,7 @@ int main() {
 ```
 
 ## Getting User
-```
+```C++
 #include <Server.hpp>
 #include <iostream>
 
@@ -74,7 +74,7 @@ int main() {
 ```
 
 ## Maniplating user
-```
+```C++
 #include <Server.hpp>
 #include <iostream>
 
