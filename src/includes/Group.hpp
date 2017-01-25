@@ -39,9 +39,11 @@ namespace Ts3Api {
     map<string, Client> splitClient(string input);
 
   public:
-    Group(Server &server, string id, ts3GroupType groupType = SERVER, bool incomleteInit = false);
+    Group(Server &server, string id = "unknown", ts3GroupType groupType = SERVER, bool incomleteInit = false);
 
     void update();
+
+    bool good();
 
     ts3Response addClient(string clid);
     ts3Response addClient(string dbid, string cid);

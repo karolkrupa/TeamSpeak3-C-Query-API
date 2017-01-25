@@ -7,6 +7,8 @@ Channel::channelInfoProperties::channelInfoProperties(string &id, Server& server
 }
 
 bool Channel::good() {
+  if(id == "unknown") return false;
+
   auto response = server.executeCommand("channelinfo cid="+id);
 
   if(response.error) return false;

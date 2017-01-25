@@ -723,3 +723,42 @@ Server::serverConnectionProperties Server::getConnectionInfo() {
 
   return props;
 }
+
+Channel Server::createChannel(string channelName) {
+  map<string, string> channelID;
+  auto response = executeCommand("channelcreate channel_name="+messageEncode(channelName));
+  if(response.error) return Channel(*this);
+
+  split(channelID, response.data);
+  return Channel(*this, channelID["cid"]);
+}
+Channel Server::createChannel(string channelName, map<string, string> channelProperties) {
+  map<string, string> channelID;
+  string command = "channelcreate channel_name="+messageEncode(channelName);
+
+  for(auto it = channelProperties.begin(); it != channelProperties.end(); ++it) {
+    command += " " + it->first + "=" + it->second;
+  }
+
+  auto response = executeCommand(command);
+  if(response.error) return Channel(*this);
+
+  split(channelID, response.data);
+  return Channel(*this, channelID["cid"]);
+}
+Group Server::channelGroupCreate(string name, groupDbType type) {
+  map<string, string> groupID;
+  auto response = executeCommand("channelgroupadd name="+messageEncode(name)+" type="+to_string(type));
+  if(response.error) return Group(*this);
+
+  split(groupID, response.data);
+  return Group(*this, groupID["cgid"]);
+}
+Group Server::serverGroupCreate(string name, groupDbType type) {
+  map<string, string> groupID;
+  auto response = executeCommand("servergroupadd name="+messageEncode(name)+" type="+to_string(type));
+  if(response.error) return Group(*this);
+
+  split(groupID, response.data);
+  return Group(*this, groupID["sgid"]);
+}

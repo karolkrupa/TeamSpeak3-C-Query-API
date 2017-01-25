@@ -111,7 +111,7 @@ namespace Ts3Api {
     channelInfoProperties channelInfo;
 
   public:
-    Channel(Server &server, string id, bool incomleteInit = false);
+    Channel(Server &server, string id = "unknown", bool incomleteInit = false);
 
     bool good();
 

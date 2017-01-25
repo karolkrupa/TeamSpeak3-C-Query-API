@@ -22,6 +22,10 @@ Group::Group(Server &server, string id, ts3GroupType groupType, bool incomleteIn
   this->groupType = groupType;
 }
 
+bool Group::good() {
+  return (id == "unknown")? false : true;
+}
+
 void Group::update() {
   updateTime = time(NULL);
 }

@@ -487,7 +487,17 @@ namespace Ts3Api {
 
 
 
+    Channel createChannel(string channelName);
+    Channel createChannel(string channelName, map<string, string> channelProperties);
 
+    enum groupDbType {
+        groupTemplate = 0,
+        groupRegular,
+        groupQuery
+    };
+
+    Group channelGroupCreate(string name, groupDbType type = groupRegular);
+    Group serverGroupCreate(string name, groupDbType type = groupRegular);
 
   };
 }
