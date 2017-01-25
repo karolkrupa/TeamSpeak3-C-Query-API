@@ -1,24 +1,27 @@
 var indexSectionsWithContent =
 {
-  0: "ceginpstuv",
+  0: "cegilnpstuv~",
   1: "ceginpst",
-  2: "cgu",
-  3: "pv"
+  2: "t",
+  3: "ceglnstu~",
+  4: "pv"
 };
 
 var indexSectionNames =
 {
   0: "all",
   1: "classes",
-  2: "functions",
-  3: "variables"
+  2: "namespaces",
+  3: "functions",
+  4: "variables"
 };
 
 var indexSectionLabels =
 {
   0: "All",
-  1: "Klasy",
-  2: "Funkcje",
-  3: "Zmienne"
+  1: "Classes",
+  2: "Namespaces",
+  3: "Functions",
+  4: "Variables"
 };
 

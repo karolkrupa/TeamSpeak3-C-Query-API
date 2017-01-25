@@ -21,12 +21,14 @@ Server::Server(string ip, string port) {
   */
 }
 
+
+
 Server::~Server() {
   receiverStop();
   close(sock);
 }
 
-int Server::connectToServer() {
+bool Server::connectToServer() {
   addrinfo serverInfo, *inetServerInfo = NULL;
 
   memset(&serverInfo, 0, sizeof(addrinfo));

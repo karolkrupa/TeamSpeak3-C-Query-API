@@ -9,18 +9,18 @@ int main() {
   server.login("serveradmin", "u++5RvMV");
   server.selectServer("9987");
 
-   if(server.receiverStart())
-     cout << "Receiver Started" << endl;
-   else
-     cout << "Receiver Error" << endl;
+  //  if(server.receiverStart())
+  //    cout << "Receiver Started" << endl;
+  //  else
+  //    cout << "Receiver Error" << endl;
 
-  if(server.receiverStop())
-    cout << "Receiver Stoped" << endl;
-  else
-    cout << "Receiver stop error" << endl;
+  // if(server.receiverStop())
+  //   cout << "Receiver Stoped" << endl;
+  // else
+  //   cout << "Receiver stop error" << endl;
 
-  if(server.receiverStatus())
-    cout << "Reveiver Runing" << endl;
+  // if(server.receiverStatus())
+  //   cout << "Reveiver Runing" << endl;
 
 
 

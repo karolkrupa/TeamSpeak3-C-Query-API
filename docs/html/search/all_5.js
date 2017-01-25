@@ -1,7 +1,5 @@
 var searchData=
 [
-  ['paramname',['paramName',['../struct_ts3_api_1_1_client_1_1changeable_param.html#a8fd9d911c39159e0139a7309d0d99e38',1,'Ts3Api::Client::changeableParam']]],
-  ['permission',['Permission',['../class_ts3_api_1_1_permission.html',1,'Ts3Api']]],
-  ['properties',['properties',['../struct_ts3_api_1_1_client_1_1properties.html',1,'Ts3Api::Client']]],
-  ['property',['property',['../struct_ts3_api_1_1_client_1_1property.html',1,'Ts3Api::Client']]]
+  ['newvalue',['newValue',['../struct_ts3_api_1_1_channel_1_1channel_changeable_param.html#a9c6973de92919890c973b5ac4d32e20d',1,'Ts3Api::Channel::channelChangeableParam']]],
+  ['nickname',['nickname',['../struct_ts3_api_1_1_client_1_1nickname.html',1,'Ts3Api::Client']]]
 ];

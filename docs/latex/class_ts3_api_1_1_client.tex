@@ -1,25 +1,30 @@
-\hypertarget{class_ts3_api_1_1_client}{}\section{Dokumentacja klasy Ts3\+Api\+:\+:Client}
+\hypertarget{class_ts3_api_1_1_client}{}\section{Ts3\+Api\+:\+:Client Class Reference}
 \label{class_ts3_api_1_1_client}\index{Ts3\+Api\+::\+Client@{Ts3\+Api\+::\+Client}}
-\subsection*{Komponenty}
+
+
+Pozwala na manupulacje wybranym użytkownikiem.  
+
+
+
+
+{\ttfamily \#include $<$Client.\+hpp$>$}
+
+\subsection*{Classes}
 \begin{DoxyCompactItemize}
 \item 
 struct \hyperlink{struct_ts3_api_1_1_client_1_1changeable_param}{changeable\+Param}
 \begin{DoxyCompactList}\small\item\em Struktura pozwala na sprawdzenie oraz zmianę wybranej właściwości użytkownika. \end{DoxyCompactList}\item 
 struct \hyperlink{struct_ts3_api_1_1_client_1_1client_info_properties}{client\+Info\+Properties}
-\item 
+\begin{DoxyCompactList}\small\item\em Struktura zawierająca informacje z polecenia query\+: \char`\"{}clientinfo\char`\"{}. \end{DoxyCompactList}\item 
 struct \hyperlink{struct_ts3_api_1_1_client_1_1connection_info}{connection\+Info}
-\item 
+\begin{DoxyCompactList}\small\item\em Zawiera informacje o połączeniu danego użykownika. \end{DoxyCompactList}\item 
 struct \hyperlink{struct_ts3_api_1_1_client_1_1_i_ds}{I\+Ds}
-\item 
+\begin{DoxyCompactList}\small\item\em Zbiór indentyfikatorów użytkownika. \end{DoxyCompactList}\item 
 struct \hyperlink{struct_ts3_api_1_1_client_1_1nickname}{nickname}
-\item 
-struct \hyperlink{struct_ts3_api_1_1_client_1_1properties}{properties}
-\item 
-struct \hyperlink{struct_ts3_api_1_1_client_1_1property}{property}
 \item 
 struct \hyperlink{struct_ts3_api_1_1_client_1_1transfer_info}{transfer\+Info}
 \begin{DoxyCompactList}\small\item\em Zawiera informacje o transferze dengo użytkownika. \end{DoxyCompactList}\end{DoxyCompactItemize}
-\subsection*{Metody publiczne}
+\subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 \hyperlink{class_ts3_api_1_1_client_ad63f5acca38e884294bdf24883fac068}{Client} (\hyperlink{class_ts3_api_1_1_server}{Server} \&server, \hyperlink{struct_ts3_api_1_1_client_1_1_i_ds}{I\+Ds} client\+I\+Ds, bool client\+List\+Init=false)
@@ -28,28 +33,28 @@ void \hyperlink{class_ts3_api_1_1_client_a6e7a5e19c40bef39ae1c0f5996b8c471}{upda
 \begin{DoxyCompactList}\small\item\em Wymusza aktualizację informacji o użytkowniku. \end{DoxyCompactList}\item 
 bool \hyperlink{class_ts3_api_1_1_client_a52f9b3ce0e014563b757afdd6fff4628}{good} ()
 \begin{DoxyCompactList}\small\item\em Sprawdza czy dany obiekt jest prawidłowy. \end{DoxyCompactList}\item 
-\hyperlink{struct_ts3_api_1_1_client_1_1property}{property} \hyperlink{class_ts3_api_1_1_client_a72d6480e7f921ce9694dffeadab1b79a}{get\+C\+L\+ID} ()\hypertarget{class_ts3_api_1_1_client_a72d6480e7f921ce9694dffeadab1b79a}{}\label{class_ts3_api_1_1_client_a72d6480e7f921ce9694dffeadab1b79a}
+\hyperlink{struct_ts3_api_1_1property}{property} \hyperlink{class_ts3_api_1_1_client_a22b13e80c0196fe504eb7eccfbc8c54f}{get\+C\+L\+ID} ()\hypertarget{class_ts3_api_1_1_client_a22b13e80c0196fe504eb7eccfbc8c54f}{}\label{class_ts3_api_1_1_client_a22b13e80c0196fe504eb7eccfbc8c54f}
 
 \begin{DoxyCompactList}\small\item\em Zwraca \char`\"{}\+Client I\+D\char`\"{} użytkownika. \end{DoxyCompactList}\item 
-\hyperlink{struct_ts3_api_1_1_client_1_1property}{property} \hyperlink{class_ts3_api_1_1_client_a4f145da31772f851628c0a87042c2942}{get\+U\+ID} ()\hypertarget{class_ts3_api_1_1_client_a4f145da31772f851628c0a87042c2942}{}\label{class_ts3_api_1_1_client_a4f145da31772f851628c0a87042c2942}
+\hyperlink{struct_ts3_api_1_1property}{property} \hyperlink{class_ts3_api_1_1_client_aae2b776db1783649cf2e9bf25b9a0a44}{get\+U\+ID} ()\hypertarget{class_ts3_api_1_1_client_aae2b776db1783649cf2e9bf25b9a0a44}{}\label{class_ts3_api_1_1_client_aae2b776db1783649cf2e9bf25b9a0a44}
 
 \begin{DoxyCompactList}\small\item\em Zwraca \char`\"{}\+Unique Identifiter\char`\"{} użytkownika. \end{DoxyCompactList}\item 
-\hyperlink{struct_ts3_api_1_1_client_1_1property}{property} \hyperlink{class_ts3_api_1_1_client_a3854f5517090c0e8428b2de31aac878a}{get\+D\+B\+ID} ()\hypertarget{class_ts3_api_1_1_client_a3854f5517090c0e8428b2de31aac878a}{}\label{class_ts3_api_1_1_client_a3854f5517090c0e8428b2de31aac878a}
+\hyperlink{struct_ts3_api_1_1property}{property} \hyperlink{class_ts3_api_1_1_client_a852fdeb5b265cd32ba0f225277b0e097}{get\+D\+B\+ID} ()\hypertarget{class_ts3_api_1_1_client_a852fdeb5b265cd32ba0f225277b0e097}{}\label{class_ts3_api_1_1_client_a852fdeb5b265cd32ba0f225277b0e097}
 
 \begin{DoxyCompactList}\small\item\em Zwraca \char`\"{}\+Database I\+D\char`\"{} użytkownika. \end{DoxyCompactList}\item 
-\hyperlink{struct_ts3_api_1_1_client_1_1property}{property} \hyperlink{class_ts3_api_1_1_client_a9e72f2d9a120491bb17e8b0871339852}{get\+Idle\+Time} ()\hypertarget{class_ts3_api_1_1_client_a9e72f2d9a120491bb17e8b0871339852}{}\label{class_ts3_api_1_1_client_a9e72f2d9a120491bb17e8b0871339852}
+\hyperlink{struct_ts3_api_1_1property}{property} \hyperlink{class_ts3_api_1_1_client_aa15dcc0cb53592ff645315c263ab554d}{get\+Idle\+Time} ()\hypertarget{class_ts3_api_1_1_client_aa15dcc0cb53592ff645315c263ab554d}{}\label{class_ts3_api_1_1_client_aa15dcc0cb53592ff645315c263ab554d}
 
 \begin{DoxyCompactList}\small\item\em Zwraca \char`\"{}\+Idle Time\char`\"{} użytkownika. \end{DoxyCompactList}\item 
 \hyperlink{struct_ts3_api_1_1_client_1_1nickname}{nickname} {\bfseries get\+Nickname} ()\hypertarget{class_ts3_api_1_1_client_ab4ee104edd30af8926b01cc412c37c77}{}\label{class_ts3_api_1_1_client_ab4ee104edd30af8926b01cc412c37c77}
 
 \item 
-\hyperlink{struct_ts3_api_1_1_client_1_1property}{property} {\bfseries get\+Version} ()\hypertarget{class_ts3_api_1_1_client_a1f93d8d831cc99fab88097bd6aef82d6}{}\label{class_ts3_api_1_1_client_a1f93d8d831cc99fab88097bd6aef82d6}
+\hyperlink{struct_ts3_api_1_1property}{property} {\bfseries get\+Version} ()\hypertarget{class_ts3_api_1_1_client_a284062743026d2c188db495afb5eefbf}{}\label{class_ts3_api_1_1_client_a284062743026d2c188db495afb5eefbf}
 
 \item 
-\hyperlink{struct_ts3_api_1_1_client_1_1property}{property} {\bfseries get\+Version\+Sign} ()\hypertarget{class_ts3_api_1_1_client_a99b8daa6d6d57b878f9a13cd5c9e0af5}{}\label{class_ts3_api_1_1_client_a99b8daa6d6d57b878f9a13cd5c9e0af5}
+\hyperlink{struct_ts3_api_1_1property}{property} {\bfseries get\+Version\+Sign} ()\hypertarget{class_ts3_api_1_1_client_a1be57c7c71eb9e1146831085e027fdbe}{}\label{class_ts3_api_1_1_client_a1be57c7c71eb9e1146831085e027fdbe}
 
 \item 
-\hyperlink{struct_ts3_api_1_1_client_1_1property}{property} {\bfseries get\+Platform} ()\hypertarget{class_ts3_api_1_1_client_ae99c8f0daeea7427a58ed2f9169371b8}{}\label{class_ts3_api_1_1_client_ae99c8f0daeea7427a58ed2f9169371b8}
+\hyperlink{struct_ts3_api_1_1property}{property} {\bfseries get\+Platform} ()\hypertarget{class_ts3_api_1_1_client_ac7241d5df8aaad0508778e09a1a6c407}{}\label{class_ts3_api_1_1_client_ac7241d5df8aaad0508778e09a1a6c407}
 
 \item 
 bool {\bfseries get\+Input\+Muted} ()\hypertarget{class_ts3_api_1_1_client_aea54e6f6b4678970b4ea40e4a6e6c162}{}\label{class_ts3_api_1_1_client_aea54e6f6b4678970b4ea40e4a6e6c162}
@@ -67,25 +72,25 @@ bool {\bfseries get\+Input\+Hardware} ()\hypertarget{class_ts3_api_1_1_client_a5
 bool {\bfseries get\+Output\+Hardware} ()\hypertarget{class_ts3_api_1_1_client_a7ade8fb756646429b0a76c021c8beb45}{}\label{class_ts3_api_1_1_client_a7ade8fb756646429b0a76c021c8beb45}
 
 \item 
-\hyperlink{struct_ts3_api_1_1_client_1_1property}{property} {\bfseries get\+Default\+Channel} ()\hypertarget{class_ts3_api_1_1_client_a47e3ed0dd865ddf3961b90d635d0b941}{}\label{class_ts3_api_1_1_client_a47e3ed0dd865ddf3961b90d635d0b941}
+\hyperlink{struct_ts3_api_1_1property}{property} {\bfseries get\+Default\+Channel} ()\hypertarget{class_ts3_api_1_1_client_ab5066a5520cd9aec7133b45be8e22b28}{}\label{class_ts3_api_1_1_client_ab5066a5520cd9aec7133b45be8e22b28}
 
 \item 
-\hyperlink{struct_ts3_api_1_1_client_1_1property}{property} {\bfseries get\+Meta\+Data} ()\hypertarget{class_ts3_api_1_1_client_abb4417973cacce23cab180e28d0e458e}{}\label{class_ts3_api_1_1_client_abb4417973cacce23cab180e28d0e458e}
+\hyperlink{struct_ts3_api_1_1property}{property} {\bfseries get\+Meta\+Data} ()\hypertarget{class_ts3_api_1_1_client_a48ea086152f248f79f9ecd6c2cb496ec}{}\label{class_ts3_api_1_1_client_a48ea086152f248f79f9ecd6c2cb496ec}
 
 \item 
 bool {\bfseries get\+Recording\+Status} ()\hypertarget{class_ts3_api_1_1_client_a49bf224894390bb80361fabd2b477be9}{}\label{class_ts3_api_1_1_client_a49bf224894390bb80361fabd2b477be9}
 
 \item 
-\hyperlink{struct_ts3_api_1_1_client_1_1property}{property} {\bfseries get\+Security\+Hash} ()\hypertarget{class_ts3_api_1_1_client_ac4dc5825d75d73d9c10ef24caa15484f}{}\label{class_ts3_api_1_1_client_ac4dc5825d75d73d9c10ef24caa15484f}
+\hyperlink{struct_ts3_api_1_1property}{property} {\bfseries get\+Security\+Hash} ()\hypertarget{class_ts3_api_1_1_client_a0120e08adfcb5dc34d0157b363cc594b}{}\label{class_ts3_api_1_1_client_a0120e08adfcb5dc34d0157b363cc594b}
 
 \item 
-\hyperlink{struct_ts3_api_1_1_client_1_1property}{property} {\bfseries get\+Login\+Name} ()\hypertarget{class_ts3_api_1_1_client_a83def7db779ad53a69b47166a85db2c1}{}\label{class_ts3_api_1_1_client_a83def7db779ad53a69b47166a85db2c1}
+\hyperlink{struct_ts3_api_1_1property}{property} {\bfseries get\+Login\+Name} ()\hypertarget{class_ts3_api_1_1_client_a3f204918174c795b4759660eeb6cdc0c}{}\label{class_ts3_api_1_1_client_a3f204918174c795b4759660eeb6cdc0c}
 
 \item 
 \hyperlink{class_ts3_api_1_1_group}{Group} {\bfseries get\+Channel\+Group} ()\hypertarget{class_ts3_api_1_1_client_a55c6f2dc787130636f99cd1c38d65137}{}\label{class_ts3_api_1_1_client_a55c6f2dc787130636f99cd1c38d65137}
 
 \item 
-\hyperlink{struct_ts3_api_1_1_client_1_1property}{property} {\bfseries get\+Channel\+Group\+ID} ()\hypertarget{class_ts3_api_1_1_client_aa53d97dbbff17a0e19194d6e5cca8fac}{}\label{class_ts3_api_1_1_client_aa53d97dbbff17a0e19194d6e5cca8fac}
+\hyperlink{struct_ts3_api_1_1property}{property} {\bfseries get\+Channel\+Group\+ID} ()\hypertarget{class_ts3_api_1_1_client_ae82cc8ca4c0fb9d79a36537b6168a710}{}\label{class_ts3_api_1_1_client_ae82cc8ca4c0fb9d79a36537b6168a710}
 
 \item 
 vector$<$ \hyperlink{class_ts3_api_1_1_group}{Group} $>$ {\bfseries get\+Server\+Groups} ()\hypertarget{class_ts3_api_1_1_client_a0cda9e0c7e285f4936807a7792937c74}{}\label{class_ts3_api_1_1_client_a0cda9e0c7e285f4936807a7792937c74}
@@ -100,28 +105,28 @@ vector$<$ string $>$ {\bfseries get\+Server\+Groups\+List} ()\hypertarget{class_
 \hyperlink{struct_ts3_api_1_1timestamp_time}{timestamp\+Time} {\bfseries get\+Lastconnected\+Time} ()\hypertarget{class_ts3_api_1_1_client_a3c7b2b662a6ca58c5d64061310948916}{}\label{class_ts3_api_1_1_client_a3c7b2b662a6ca58c5d64061310948916}
 
 \item 
-\hyperlink{struct_ts3_api_1_1_client_1_1property}{property} {\bfseries get\+Total\+Connections} ()\hypertarget{class_ts3_api_1_1_client_a585be182f993f8fef6b3f84eb9a61d49}{}\label{class_ts3_api_1_1_client_a585be182f993f8fef6b3f84eb9a61d49}
+\hyperlink{struct_ts3_api_1_1property}{property} {\bfseries get\+Total\+Connections} ()\hypertarget{class_ts3_api_1_1_client_ae3722038a4591f7b24aa8b3da5ba06e2}{}\label{class_ts3_api_1_1_client_ae3722038a4591f7b24aa8b3da5ba06e2}
 
 \item 
 bool {\bfseries get\+Away\+Status} ()\hypertarget{class_ts3_api_1_1_client_a7e92b3d2dd2192570eb593e9eeabb824}{}\label{class_ts3_api_1_1_client_a7e92b3d2dd2192570eb593e9eeabb824}
 
 \item 
-\hyperlink{struct_ts3_api_1_1_client_1_1property}{property} {\bfseries get\+Away\+Message} ()\hypertarget{class_ts3_api_1_1_client_a7a9ed475fe2ce1cd1bd13df2b2670a85}{}\label{class_ts3_api_1_1_client_a7a9ed475fe2ce1cd1bd13df2b2670a85}
+\hyperlink{struct_ts3_api_1_1property}{property} {\bfseries get\+Away\+Message} ()\hypertarget{class_ts3_api_1_1_client_a2522dee6bcaaf91fbe77d3e61a2babdc}{}\label{class_ts3_api_1_1_client_a2522dee6bcaaf91fbe77d3e61a2babdc}
 
 \item 
-\hyperlink{struct_ts3_api_1_1_client_1_1property}{property} {\bfseries get\+Type} ()\hypertarget{class_ts3_api_1_1_client_a0f450e97a7df845fecd966e884e801b7}{}\label{class_ts3_api_1_1_client_a0f450e97a7df845fecd966e884e801b7}
+\hyperlink{struct_ts3_api_1_1property}{property} {\bfseries get\+Type} ()\hypertarget{class_ts3_api_1_1_client_a7505bad33c8953b64a86dfce21818633}{}\label{class_ts3_api_1_1_client_a7505bad33c8953b64a86dfce21818633}
 
 \item 
-\hyperlink{struct_ts3_api_1_1_client_1_1property}{property} {\bfseries get\+Avatar\+Flag} ()\hypertarget{class_ts3_api_1_1_client_ad497e8e5075353277cb1592546ac38cf}{}\label{class_ts3_api_1_1_client_ad497e8e5075353277cb1592546ac38cf}
+\hyperlink{struct_ts3_api_1_1property}{property} {\bfseries get\+Avatar\+Flag} ()\hypertarget{class_ts3_api_1_1_client_a1820f44834524c0fe2497cd1d752026e}{}\label{class_ts3_api_1_1_client_a1820f44834524c0fe2497cd1d752026e}
 
 \item 
 \hyperlink{class_ts3_api_1_1_permission}{Permission} {\bfseries get\+Talk\+Power} ()\hypertarget{class_ts3_api_1_1_client_a8a88e7e7271f59531d2ad243a8a1ca98}{}\label{class_ts3_api_1_1_client_a8a88e7e7271f59531d2ad243a8a1ca98}
 
 \item 
-\hyperlink{struct_ts3_api_1_1_client_1_1property}{property} {\bfseries get\+Talk\+Request} ()\hypertarget{class_ts3_api_1_1_client_a61622917f5ad079cd7c3fde0fd2c488c}{}\label{class_ts3_api_1_1_client_a61622917f5ad079cd7c3fde0fd2c488c}
+\hyperlink{struct_ts3_api_1_1property}{property} {\bfseries get\+Talk\+Request} ()\hypertarget{class_ts3_api_1_1_client_a26ccd40e1643c455874a9292a3a261f5}{}\label{class_ts3_api_1_1_client_a26ccd40e1643c455874a9292a3a261f5}
 
 \item 
-\hyperlink{struct_ts3_api_1_1_client_1_1property}{property} {\bfseries get\+Talk\+Request\+Msg} ()\hypertarget{class_ts3_api_1_1_client_a1abf8ffacf99cb032eea2799c810b44e}{}\label{class_ts3_api_1_1_client_a1abf8ffacf99cb032eea2799c810b44e}
+\hyperlink{struct_ts3_api_1_1property}{property} {\bfseries get\+Talk\+Request\+Msg} ()\hypertarget{class_ts3_api_1_1_client_a764808f25662c0d88d9b07e87c7cd087}{}\label{class_ts3_api_1_1_client_a764808f25662c0d88d9b07e87c7cd087}
 
 \item 
 \hyperlink{struct_ts3_api_1_1_client_1_1changeable_param}{changeable\+Param} {\bfseries get\+Description} ()\hypertarget{class_ts3_api_1_1_client_ab322f2946d48e0b72859fc6f22a5a2ec}{}\label{class_ts3_api_1_1_client_ab322f2946d48e0b72859fc6f22a5a2ec}
@@ -139,7 +144,7 @@ bool {\bfseries get\+Priority\+Speaker\+Status} ()\hypertarget{class_ts3_api_1_1
 \hyperlink{class_ts3_api_1_1_permission}{Permission} {\bfseries get\+Needed\+Serverquery\+View\+Power} ()\hypertarget{class_ts3_api_1_1_client_a823273f1c8c4b858b2b416a645e9c245}{}\label{class_ts3_api_1_1_client_a823273f1c8c4b858b2b416a645e9c245}
 
 \item 
-\hyperlink{struct_ts3_api_1_1_client_1_1property}{property} {\bfseries get\+Default\+Token} ()\hypertarget{class_ts3_api_1_1_client_ae732cc011b882c77350de6ce99fbd3a0}{}\label{class_ts3_api_1_1_client_ae732cc011b882c77350de6ce99fbd3a0}
+\hyperlink{struct_ts3_api_1_1property}{property} {\bfseries get\+Default\+Token} ()\hypertarget{class_ts3_api_1_1_client_ada968043c62d3e2ae4799ac8aac76e10}{}\label{class_ts3_api_1_1_client_ada968043c62d3e2ae4799ac8aac76e10}
 
 \item 
 \hyperlink{struct_ts3_api_1_1_client_1_1changeable_param}{changeable\+Param} {\bfseries get\+Icon\+Id} ()\hypertarget{class_ts3_api_1_1_client_a130b1601b40d9e2062d767aa6c68c42d}{}\label{class_ts3_api_1_1_client_a130b1601b40d9e2062d767aa6c68c42d}
@@ -148,16 +153,16 @@ bool {\bfseries get\+Priority\+Speaker\+Status} ()\hypertarget{class_ts3_api_1_1
 \hyperlink{struct_ts3_api_1_1_client_1_1changeable_param}{changeable\+Param} {\bfseries get\+Channel\+Commander\+Status} ()\hypertarget{class_ts3_api_1_1_client_a6387e63b888385926fee0c8c98fbdbde}{}\label{class_ts3_api_1_1_client_a6387e63b888385926fee0c8c98fbdbde}
 
 \item 
-\hyperlink{struct_ts3_api_1_1_client_1_1property}{property} \hyperlink{class_ts3_api_1_1_client_a7aea0d7be0c13772bf0cbcfe435d5b35}{get\+Country} ()\hypertarget{class_ts3_api_1_1_client_a7aea0d7be0c13772bf0cbcfe435d5b35}{}\label{class_ts3_api_1_1_client_a7aea0d7be0c13772bf0cbcfe435d5b35}
+\hyperlink{struct_ts3_api_1_1property}{property} \hyperlink{class_ts3_api_1_1_client_a6fbf02bbe944a5922cccc1ba2e8b9468}{get\+Country} ()\hypertarget{class_ts3_api_1_1_client_a6fbf02bbe944a5922cccc1ba2e8b9468}{}\label{class_ts3_api_1_1_client_a6fbf02bbe944a5922cccc1ba2e8b9468}
 
 \begin{DoxyCompactList}\small\item\em Zwraca kraj użytkownika. \end{DoxyCompactList}\item 
-\hyperlink{struct_ts3_api_1_1_client_1_1property}{property} {\bfseries get\+Channel\+Group\+Inherit\+Channel\+ID} ()\hypertarget{class_ts3_api_1_1_client_a7ca8f8068c190499d056c49496cdb2e8}{}\label{class_ts3_api_1_1_client_a7ca8f8068c190499d056c49496cdb2e8}
+\hyperlink{struct_ts3_api_1_1property}{property} {\bfseries get\+Channel\+Group\+Inherit\+Channel\+ID} ()\hypertarget{class_ts3_api_1_1_client_aff139d60eae2d6a65a4865f5401840e8}{}\label{class_ts3_api_1_1_client_aff139d60eae2d6a65a4865f5401840e8}
 
 \item 
-\hyperlink{struct_ts3_api_1_1_client_1_1property}{property} {\bfseries get\+Badges} ()\hypertarget{class_ts3_api_1_1_client_a13b167d84730f97ef069395d58bb2b24}{}\label{class_ts3_api_1_1_client_a13b167d84730f97ef069395d58bb2b24}
+\hyperlink{struct_ts3_api_1_1property}{property} {\bfseries get\+Badges} ()\hypertarget{class_ts3_api_1_1_client_a409ee9196f1db33a8c29d82d9f808cf4}{}\label{class_ts3_api_1_1_client_a409ee9196f1db33a8c29d82d9f808cf4}
 
 \item 
-\hyperlink{struct_ts3_api_1_1_client_1_1property}{property} {\bfseries get\+Base64\+Hash\+Client\+U\+ID} ()\hypertarget{class_ts3_api_1_1_client_aea48dfe6fed2db31878bfb46093f315d}{}\label{class_ts3_api_1_1_client_aea48dfe6fed2db31878bfb46093f315d}
+\hyperlink{struct_ts3_api_1_1property}{property} {\bfseries get\+Base64\+Hash\+Client\+U\+ID} ()\hypertarget{class_ts3_api_1_1_client_a37dbbf574ee7bc480916ccae844b3d30}{}\label{class_ts3_api_1_1_client_a37dbbf574ee7bc480916ccae844b3d30}
 
 \item 
 \hyperlink{struct_ts3_api_1_1_client_1_1connection_info}{connection\+Info} {\bfseries get\+Connection\+Info} ()\hypertarget{class_ts3_api_1_1_client_a59fb7b7c522625c35a1d1a8e7e125d5a}{}\label{class_ts3_api_1_1_client_a59fb7b7c522625c35a1d1a8e7e125d5a}
@@ -223,15 +228,23 @@ bool {\bfseries get\+Priority\+Speaker\+Status} ()\hypertarget{class_ts3_api_1_1
 \hyperlink{struct_ts3_api_1_1ts3_response}{ts3\+Response} {\bfseries send\+Message} (string message)\hypertarget{class_ts3_api_1_1_client_a5ca6d7dcf16e56d5984dfd1782deea95}{}\label{class_ts3_api_1_1_client_a5ca6d7dcf16e56d5984dfd1782deea95}
 
 \end{DoxyCompactItemize}
-\subsection*{Przyjaciele}
+\subsection*{Friends}
 \begin{DoxyCompactItemize}
 \item 
 class {\bfseries Permission}\hypertarget{class_ts3_api_1_1_client_ad3834bbd6b2c4839e7f69dc4cc1d6ae6}{}\label{class_ts3_api_1_1_client_ad3834bbd6b2c4839e7f69dc4cc1d6ae6}
 
+\item 
+class {\bfseries Group}\hypertarget{class_ts3_api_1_1_client_a2697825715974a353728f0d4d5658112}{}\label{class_ts3_api_1_1_client_a2697825715974a353728f0d4d5658112}
+
 \end{DoxyCompactItemize}
 
 
-\subsection{Dokumentacja konstruktora i destruktora}
+\subsection{Detailed Description}
+Pozwala na manupulacje wybranym użytkownikiem. 
+
+
+
+\subsection{Constructor \& Destructor Documentation}
 \index{Ts3\+Api\+::\+Client@{Ts3\+Api\+::\+Client}!Client@{Client}}
 \index{Client@{Client}!Ts3\+Api\+::\+Client@{Ts3\+Api\+::\+Client}}
 \subsubsection[{\texorpdfstring{Client(\+Server \&server, I\+Ds client\+I\+Ds, bool client\+List\+Init=false)}{Client(Server &server, IDs clientIDs, bool clientListInit=false)}}]{\setlength{\rightskip}{0pt plus 5cm}Client\+::\+Client (
@@ -242,7 +255,11 @@ class {\bfseries Permission}\hypertarget{class_ts3_api_1_1_client_ad3834bbd6b2c4
 \end{DoxyParamCaption}
 )}\hypertarget{class_ts3_api_1_1_client_ad63f5acca38e884294bdf24883fac068}{}\label{class_ts3_api_1_1_client_ad63f5acca38e884294bdf24883fac068}
 
-\begin{DoxyParams}{Parametry}
+
+Tworzy nowy obiekt użytkownika. 
+
+
+\begin{DoxyParams}{Parameters}
 {\em server} & Obiekt \hyperlink{class_ts3_api_1_1_server}{Server} z którego pochodzić ma użytkownik \\
 \hline
 {\em client\+I\+Ds} & Struktura \hyperlink{struct_ts3_api_1_1_client_1_1_i_ds}{I\+Ds} zawierająca conajmniej jeden identyfikator użytkownika \\
@@ -252,7 +269,7 @@ class {\bfseries Permission}\hypertarget{class_ts3_api_1_1_client_ad3834bbd6b2c4
 \end{DoxyParams}
 
 
-\subsection{Dokumentacja funkcji składowych}
+\subsection{Member Function Documentation}
 \index{Ts3\+Api\+::\+Client@{Ts3\+Api\+::\+Client}!good@{good}}
 \index{good@{good}!Ts3\+Api\+::\+Client@{Ts3\+Api\+::\+Client}}
 \subsubsection[{\texorpdfstring{good()}{good()}}]{\setlength{\rightskip}{0pt plus 5cm}bool Client\+::good (
@@ -260,6 +277,10 @@ class {\bfseries Permission}\hypertarget{class_ts3_api_1_1_client_ad3834bbd6b2c4
 {}
 \end{DoxyParamCaption}
 )}\hypertarget{class_ts3_api_1_1_client_a52f9b3ce0e014563b757afdd6fff4628}{}\label{class_ts3_api_1_1_client_a52f9b3ce0e014563b757afdd6fff4628}
+
+
+Sprawdza czy dany obiekt jest prawidłowy. 
+
 Pozwala sprawdzić czy pobrany obiekt użytkownika jest poprawny tzn. zawiera jego identyfikator pozwalający pobrać o nim informacje.~\newline
  Jeżeli funkcja zwraca wartość false nie należy używać danego obiektu ponieważ nie będzie on w stanie zwrócić żadnych informacji.~\newline
  Zalecane jest wywołanie tej funkcji po pobraniu użytkownika za pomocą get\+Client\+By\+Nickname(). \index{Ts3\+Api\+::\+Client@{Ts3\+Api\+::\+Client}!update@{update}}
@@ -269,9 +290,13 @@ Pozwala sprawdzić czy pobrany obiekt użytkownika jest poprawny tzn. zawiera je
 {}
 \end{DoxyParamCaption}
 )}\hypertarget{class_ts3_api_1_1_client_a6e7a5e19c40bef39ae1c0f5996b8c471}{}\label{class_ts3_api_1_1_client_a6e7a5e19c40bef39ae1c0f5996b8c471}
+
+
+Wymusza aktualizację informacji o użytkowniku. 
+
 Po wywołaniu tej metody przy następnej próbie pobrania jakiejkolwiek właściwości użytkownika wszystkie informacje zostaną zaaktualizowane 
 
-Dokumentacja dla tej klasy została wygenerowana z plików\+:\begin{DoxyCompactItemize}
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-/home/karol/projects/ts3\+A\+P\+Iv2/src/includes/Client.\+hpp\item 
-/home/karol/projects/ts3\+A\+P\+Iv2/src/Client.\+cpp\end{DoxyCompactItemize}
+/home/karol/projects/\+Team\+Speak3-\/\+C-\/\+Query-\/\+A\+P\+I/src/includes/Client.\+hpp\item 
+/home/karol/projects/\+Team\+Speak3-\/\+C-\/\+Query-\/\+A\+P\+I/src/Client.\+cpp\end{DoxyCompactItemize}

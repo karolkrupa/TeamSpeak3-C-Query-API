@@ -90,7 +90,7 @@ Channel::channelFlags Channel::getFlags() {
 
   return flags;
 }
-property Channel::getsecuritySalt() {
+property Channel::getSecuritySalt() {
   return channelInfo.getProperty("channel_security_salt");
 }
 property Channel::getDeleteDelay() {

@@ -1,62 +1,343 @@
-\hypertarget{class_ts3_api_1_1_server}{}\section{Dokumentacja klasy Ts3\+Api\+:\+:Server}
+\hypertarget{class_ts3_api_1_1_server}{}\section{Ts3\+Api\+:\+:Server Class Reference}
 \label{class_ts3_api_1_1_server}\index{Ts3\+Api\+::\+Server@{Ts3\+Api\+::\+Server}}
-\subsection*{Metody publiczne}
+
+
+\hyperlink{class_ts3_api_1_1_server}{Server} Class.  
+
+
+
+
+{\ttfamily \#include $<$Server.\+hpp$>$}
+
+\subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-void {\bfseries receiver\+Loop} ()\hypertarget{class_ts3_api_1_1_server_a7548a556a03580a1020766212d44517c}{}\label{class_ts3_api_1_1_server_a7548a556a03580a1020766212d44517c}
+\hyperlink{struct_ts3_api_1_1ts3_response}{ts3\+Response} \hyperlink{class_ts3_api_1_1_server_a3ea16dc4a1a611c444c17b0be04d4f45}{execute\+Command} (string command)
+\begin{DoxyCompactList}\small\item\em Performs selected command on Ts3 \hyperlink{class_ts3_api_1_1_server}{Server}. \end{DoxyCompactList}\item 
+\hyperlink{class_ts3_api_1_1_server_a58ee97b7e2b067978cbcdb8a594687f2}{Server} (string ip, string port)
+\begin{DoxyCompactList}\small\item\em Creating and connectiong connection with Ts3\+Server. \end{DoxyCompactList}\item 
+\hyperlink{class_ts3_api_1_1_server_a4b3aa2579cb1c8cd1d069582c14d0fa6}{$\sim$\+Server} ()\hypertarget{class_ts3_api_1_1_server_a4b3aa2579cb1c8cd1d069582c14d0fa6}{}\label{class_ts3_api_1_1_server_a4b3aa2579cb1c8cd1d069582c14d0fa6}
 
+\begin{DoxyCompactList}\small\item\em Destroys the object. \end{DoxyCompactList}\item 
+bool \hyperlink{class_ts3_api_1_1_server_a947c45de5db2315434a42db1bf024c4c}{connected} ()
+\begin{DoxyCompactList}\small\item\em Checks connection with Ts3 \hyperlink{class_ts3_api_1_1_server}{Server}. \end{DoxyCompactList}\item 
+\hyperlink{struct_ts3_api_1_1error}{error} \hyperlink{class_ts3_api_1_1_server_aaf8438c60bf85b8859d2f3cf2c0ae394}{get\+Error} ()
+\begin{DoxyCompactList}\small\item\em Return last error. \end{DoxyCompactList}\item 
+\hyperlink{struct_ts3_api_1_1ts3_response}{ts3\+Response} \hyperlink{class_ts3_api_1_1_server_aa7baa3564ee6d2233f9e9a7f21852b03}{select\+Server} (string port)
+\begin{DoxyCompactList}\small\item\em Selects Ts3 server. \end{DoxyCompactList}\item 
+\hyperlink{struct_ts3_api_1_1ts3_response}{ts3\+Response} \hyperlink{class_ts3_api_1_1_server_a23702c6673e012c75f5ad884dbc90d4d}{login} (string login, string password)
+\begin{DoxyCompactList}\small\item\em Login to Ts3 \hyperlink{class_ts3_api_1_1_server}{Server}. \end{DoxyCompactList}\item 
+\hyperlink{class_ts3_api_1_1_client}{Client} \hyperlink{class_ts3_api_1_1_server_a99295e7a116284d1622c7313b3a50977}{get\+Client\+By\+Clid} (string clid)
+\begin{DoxyCompactList}\small\item\em Gets the client by clid. \end{DoxyCompactList}\item 
+\hyperlink{class_ts3_api_1_1_client}{Client} \hyperlink{class_ts3_api_1_1_server_a29d600f140df9d30158b29ab649c6ec8}{get\+Client\+By\+Dbid} (string dbid)
+\begin{DoxyCompactList}\small\item\em Gets the client by dbid. \end{DoxyCompactList}\item 
+\hyperlink{class_ts3_api_1_1_client}{Client} \hyperlink{class_ts3_api_1_1_server_aed494922b927ed93491f798c42d4cc37}{get\+Client\+By\+Uid} (string uid)
+\begin{DoxyCompactList}\small\item\em Gets the client by uid. \end{DoxyCompactList}\item 
+\hyperlink{class_ts3_api_1_1_client}{Client} \hyperlink{class_ts3_api_1_1_server_a235d7e5596be98d9dc91fa07b75edcb9}{get\+Client\+By\+Nickname} (string nickname)
+\begin{DoxyCompactList}\small\item\em Gets the client by nickname. \end{DoxyCompactList}\item 
+\hyperlink{class_ts3_api_1_1_group}{Group} \hyperlink{class_ts3_api_1_1_server_a51c2e4e6f36a523dd49be6bbbfb79809}{get\+Server\+Group\+By\+Id} (string id)
+\begin{DoxyCompactList}\small\item\em Gets the server group by identifier. \end{DoxyCompactList}\item 
+\hyperlink{class_ts3_api_1_1_group}{Group} \hyperlink{class_ts3_api_1_1_server_ace36f786f8af7ef68a430d77f028a17f}{get\+Server\+Group\+By\+Name} (string name)
+\begin{DoxyCompactList}\small\item\em Gets the server group by name. \end{DoxyCompactList}\item 
+\hyperlink{class_ts3_api_1_1_group}{Group} \hyperlink{class_ts3_api_1_1_server_a2bfcde843c19e6db0ffa6ca1fc87b53c}{get\+Channel\+Group\+By\+Id} (string id)
+\begin{DoxyCompactList}\small\item\em Gets the channel group by identifier. \end{DoxyCompactList}\item 
+\hyperlink{class_ts3_api_1_1_group}{Group} \hyperlink{class_ts3_api_1_1_server_a16863c6d4f1d86878a3a3e929d7d5ad4}{get\+Channel\+Group\+By\+Name} (string name)
+\begin{DoxyCompactList}\small\item\em Gets the channel group by name. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\hyperlink{class_ts3_api_1_1_server}{Server} Class. 
+
+\subsection{Constructor \& Destructor Documentation}
+\index{Ts3\+Api\+::\+Server@{Ts3\+Api\+::\+Server}!Server@{Server}}
+\index{Server@{Server}!Ts3\+Api\+::\+Server@{Ts3\+Api\+::\+Server}}
+\subsubsection[{\texorpdfstring{Server(string ip, string port)}{Server(string ip, string port)}}]{\setlength{\rightskip}{0pt plus 5cm}Server\+::\+Server (
+\begin{DoxyParamCaption}
+\item[{string}]{ip, }
+\item[{string}]{port}
+\end{DoxyParamCaption}
+)}\hypertarget{class_ts3_api_1_1_server_a58ee97b7e2b067978cbcdb8a594687f2}{}\label{class_ts3_api_1_1_server_a58ee97b7e2b067978cbcdb8a594687f2}
+
+
+Creating and connectiong connection with Ts3\+Server. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em ip} & Ts3 server address \\
+\hline
+\mbox{\tt in}  & {\em port} & Ts3 server port \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\index{Ts3\+Api\+::\+Server@{Ts3\+Api\+::\+Server}!connected@{connected}}
+\index{connected@{connected}!Ts3\+Api\+::\+Server@{Ts3\+Api\+::\+Server}}
+\subsubsection[{\texorpdfstring{connected()}{connected()}}]{\setlength{\rightskip}{0pt plus 5cm}bool Server\+::connected (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{class_ts3_api_1_1_server_a947c45de5db2315434a42db1bf024c4c}{}\label{class_ts3_api_1_1_server_a947c45de5db2315434a42db1bf024c4c}
+
+
+Checks connection with Ts3 \hyperlink{class_ts3_api_1_1_server}{Server}. 
+
+\begin{DoxyReturn}{Returns}
+true if connected 
+\end{DoxyReturn}
+\index{Ts3\+Api\+::\+Server@{Ts3\+Api\+::\+Server}!execute\+Command@{execute\+Command}}
+\index{execute\+Command@{execute\+Command}!Ts3\+Api\+::\+Server@{Ts3\+Api\+::\+Server}}
+\subsubsection[{\texorpdfstring{execute\+Command(string command)}{executeCommand(string command)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf ts3\+Response} Server\+::execute\+Command (
+\begin{DoxyParamCaption}
+\item[{string}]{command}
+\end{DoxyParamCaption}
+)}\hypertarget{class_ts3_api_1_1_server_a3ea16dc4a1a611c444c17b0be04d4f45}{}\label{class_ts3_api_1_1_server_a3ea16dc4a1a611c444c17b0be04d4f45}
+
+
+Performs selected command on Ts3 \hyperlink{class_ts3_api_1_1_server}{Server}. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em command} & The command\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Data returned from the server 
+\end{DoxyReturn}
+\index{Ts3\+Api\+::\+Server@{Ts3\+Api\+::\+Server}!get\+Channel\+Group\+By\+Id@{get\+Channel\+Group\+By\+Id}}
+\index{get\+Channel\+Group\+By\+Id@{get\+Channel\+Group\+By\+Id}!Ts3\+Api\+::\+Server@{Ts3\+Api\+::\+Server}}
+\subsubsection[{\texorpdfstring{get\+Channel\+Group\+By\+Id(string id)}{getChannelGroupById(string id)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Group} Server\+::get\+Channel\+Group\+By\+Id (
+\begin{DoxyParamCaption}
+\item[{string}]{id}
+\end{DoxyParamCaption}
+)}\hypertarget{class_ts3_api_1_1_server_a2bfcde843c19e6db0ffa6ca1fc87b53c}{}\label{class_ts3_api_1_1_server_a2bfcde843c19e6db0ffa6ca1fc87b53c}
+
+
+Gets the channel group by identifier. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em id} & \hyperlink{class_ts3_api_1_1_group}{Group} Identifier\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\hyperlink{class_ts3_api_1_1_group}{Group} Object
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\hyperlink{class_ts3_api_1_1_group}{Group} 
+\end{DoxySeeAlso}
+\index{Ts3\+Api\+::\+Server@{Ts3\+Api\+::\+Server}!get\+Channel\+Group\+By\+Name@{get\+Channel\+Group\+By\+Name}}
+\index{get\+Channel\+Group\+By\+Name@{get\+Channel\+Group\+By\+Name}!Ts3\+Api\+::\+Server@{Ts3\+Api\+::\+Server}}
+\subsubsection[{\texorpdfstring{get\+Channel\+Group\+By\+Name(string name)}{getChannelGroupByName(string name)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Group} Server\+::get\+Channel\+Group\+By\+Name (
+\begin{DoxyParamCaption}
+\item[{string}]{name}
+\end{DoxyParamCaption}
+)}\hypertarget{class_ts3_api_1_1_server_a16863c6d4f1d86878a3a3e929d7d5ad4}{}\label{class_ts3_api_1_1_server_a16863c6d4f1d86878a3a3e929d7d5ad4}
+
+
+Gets the channel group by name. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em name} & \hyperlink{class_ts3_api_1_1_group}{Group} Name\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\hyperlink{class_ts3_api_1_1_group}{Group} Object
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\hyperlink{class_ts3_api_1_1_group}{Group} 
+\end{DoxySeeAlso}
+\index{Ts3\+Api\+::\+Server@{Ts3\+Api\+::\+Server}!get\+Client\+By\+Clid@{get\+Client\+By\+Clid}}
+\index{get\+Client\+By\+Clid@{get\+Client\+By\+Clid}!Ts3\+Api\+::\+Server@{Ts3\+Api\+::\+Server}}
+\subsubsection[{\texorpdfstring{get\+Client\+By\+Clid(string clid)}{getClientByClid(string clid)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Client} Server\+::get\+Client\+By\+Clid (
+\begin{DoxyParamCaption}
+\item[{string}]{clid}
+\end{DoxyParamCaption}
+)}\hypertarget{class_ts3_api_1_1_server_a99295e7a116284d1622c7313b3a50977}{}\label{class_ts3_api_1_1_server_a99295e7a116284d1622c7313b3a50977}
+
+
+Gets the client by clid. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em clid} & \hyperlink{class_ts3_api_1_1_client}{Client} ID\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\hyperlink{class_ts3_api_1_1_client}{Client} Object
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\hyperlink{class_ts3_api_1_1_client}{Client} 
+\end{DoxySeeAlso}
+\index{Ts3\+Api\+::\+Server@{Ts3\+Api\+::\+Server}!get\+Client\+By\+Dbid@{get\+Client\+By\+Dbid}}
+\index{get\+Client\+By\+Dbid@{get\+Client\+By\+Dbid}!Ts3\+Api\+::\+Server@{Ts3\+Api\+::\+Server}}
+\subsubsection[{\texorpdfstring{get\+Client\+By\+Dbid(string dbid)}{getClientByDbid(string dbid)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Client} Server\+::get\+Client\+By\+Dbid (
+\begin{DoxyParamCaption}
+\item[{string}]{dbid}
+\end{DoxyParamCaption}
+)}\hypertarget{class_ts3_api_1_1_server_a29d600f140df9d30158b29ab649c6ec8}{}\label{class_ts3_api_1_1_server_a29d600f140df9d30158b29ab649c6ec8}
+
+
+Gets the client by dbid. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em clid} & \hyperlink{class_ts3_api_1_1_client}{Client} Database ID\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\hyperlink{class_ts3_api_1_1_client}{Client} Object
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\hyperlink{class_ts3_api_1_1_client}{Client} 
+\end{DoxySeeAlso}
+\index{Ts3\+Api\+::\+Server@{Ts3\+Api\+::\+Server}!get\+Client\+By\+Nickname@{get\+Client\+By\+Nickname}}
+\index{get\+Client\+By\+Nickname@{get\+Client\+By\+Nickname}!Ts3\+Api\+::\+Server@{Ts3\+Api\+::\+Server}}
+\subsubsection[{\texorpdfstring{get\+Client\+By\+Nickname(string nickname)}{getClientByNickname(string nickname)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Client} Server\+::get\+Client\+By\+Nickname (
+\begin{DoxyParamCaption}
+\item[{string}]{nickname}
+\end{DoxyParamCaption}
+)}\hypertarget{class_ts3_api_1_1_server_a235d7e5596be98d9dc91fa07b75edcb9}{}\label{class_ts3_api_1_1_server_a235d7e5596be98d9dc91fa07b75edcb9}
+
+
+Gets the client by nickname. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em nickname} & \hyperlink{class_ts3_api_1_1_client}{Client} Nickname\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\hyperlink{class_ts3_api_1_1_client}{Client} Object
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\hyperlink{class_ts3_api_1_1_client}{Client} 
+\end{DoxySeeAlso}
+\index{Ts3\+Api\+::\+Server@{Ts3\+Api\+::\+Server}!get\+Client\+By\+Uid@{get\+Client\+By\+Uid}}
+\index{get\+Client\+By\+Uid@{get\+Client\+By\+Uid}!Ts3\+Api\+::\+Server@{Ts3\+Api\+::\+Server}}
+\subsubsection[{\texorpdfstring{get\+Client\+By\+Uid(string uid)}{getClientByUid(string uid)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Client} Server\+::get\+Client\+By\+Uid (
+\begin{DoxyParamCaption}
+\item[{string}]{uid}
+\end{DoxyParamCaption}
+)}\hypertarget{class_ts3_api_1_1_server_aed494922b927ed93491f798c42d4cc37}{}\label{class_ts3_api_1_1_server_aed494922b927ed93491f798c42d4cc37}
+
+
+Gets the client by uid. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em uid} & \hyperlink{class_ts3_api_1_1_client}{Client} Uniquer Identifier\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\hyperlink{class_ts3_api_1_1_client}{Client} Object
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\hyperlink{class_ts3_api_1_1_client}{Client} 
+\end{DoxySeeAlso}
+\index{Ts3\+Api\+::\+Server@{Ts3\+Api\+::\+Server}!get\+Error@{get\+Error}}
+\index{get\+Error@{get\+Error}!Ts3\+Api\+::\+Server@{Ts3\+Api\+::\+Server}}
+\subsubsection[{\texorpdfstring{get\+Error()}{getError()}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf error} Server\+::get\+Error (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{class_ts3_api_1_1_server_aaf8438c60bf85b8859d2f3cf2c0ae394}{}\label{class_ts3_api_1_1_server_aaf8438c60bf85b8859d2f3cf2c0ae394}
+
+
+Return last error. 
+
+\begin{DoxyReturn}{Returns}
+The error. 
+\end{DoxyReturn}
+\index{Ts3\+Api\+::\+Server@{Ts3\+Api\+::\+Server}!get\+Server\+Group\+By\+Id@{get\+Server\+Group\+By\+Id}}
+\index{get\+Server\+Group\+By\+Id@{get\+Server\+Group\+By\+Id}!Ts3\+Api\+::\+Server@{Ts3\+Api\+::\+Server}}
+\subsubsection[{\texorpdfstring{get\+Server\+Group\+By\+Id(string id)}{getServerGroupById(string id)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Group} Server\+::get\+Server\+Group\+By\+Id (
+\begin{DoxyParamCaption}
+\item[{string}]{id}
+\end{DoxyParamCaption}
+)}\hypertarget{class_ts3_api_1_1_server_a51c2e4e6f36a523dd49be6bbbfb79809}{}\label{class_ts3_api_1_1_server_a51c2e4e6f36a523dd49be6bbbfb79809}
+
+
+Gets the server group by identifier. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em id} & \hyperlink{class_ts3_api_1_1_group}{Group} ID\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\hyperlink{class_ts3_api_1_1_group}{Group} Object
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\hyperlink{class_ts3_api_1_1_group}{Group} 
+\end{DoxySeeAlso}
+\index{Ts3\+Api\+::\+Server@{Ts3\+Api\+::\+Server}!get\+Server\+Group\+By\+Name@{get\+Server\+Group\+By\+Name}}
+\index{get\+Server\+Group\+By\+Name@{get\+Server\+Group\+By\+Name}!Ts3\+Api\+::\+Server@{Ts3\+Api\+::\+Server}}
+\subsubsection[{\texorpdfstring{get\+Server\+Group\+By\+Name(string name)}{getServerGroupByName(string name)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Group} Server\+::get\+Server\+Group\+By\+Name (
+\begin{DoxyParamCaption}
+\item[{string}]{name}
+\end{DoxyParamCaption}
+)}\hypertarget{class_ts3_api_1_1_server_ace36f786f8af7ef68a430d77f028a17f}{}\label{class_ts3_api_1_1_server_ace36f786f8af7ef68a430d77f028a17f}
+
+
+Gets the server group by name. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em name} & \hyperlink{class_ts3_api_1_1_group}{Group} Name\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\hyperlink{class_ts3_api_1_1_group}{Group} Object
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\hyperlink{class_ts3_api_1_1_group}{Group} 
+\end{DoxySeeAlso}
+\index{Ts3\+Api\+::\+Server@{Ts3\+Api\+::\+Server}!login@{login}}
+\index{login@{login}!Ts3\+Api\+::\+Server@{Ts3\+Api\+::\+Server}}
+\subsubsection[{\texorpdfstring{login(string login, string password)}{login(string login, string password)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf ts3\+Response} Server\+::login (
+\begin{DoxyParamCaption}
+\item[{string}]{login, }
+\item[{string}]{password}
+\end{DoxyParamCaption}
+)}\hypertarget{class_ts3_api_1_1_server_a23702c6673e012c75f5ad884dbc90d4d}{}\label{class_ts3_api_1_1_server_a23702c6673e012c75f5ad884dbc90d4d}
+
+
+Login to Ts3 \hyperlink{class_ts3_api_1_1_server}{Server}. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em login} & Server\+Query user login \\
+\hline
+\mbox{\tt in}  & {\em password} & Server\+Query user password\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Data returned from the server 
+\end{DoxyReturn}
+\index{Ts3\+Api\+::\+Server@{Ts3\+Api\+::\+Server}!select\+Server@{select\+Server}}
+\index{select\+Server@{select\+Server}!Ts3\+Api\+::\+Server@{Ts3\+Api\+::\+Server}}
+\subsubsection[{\texorpdfstring{select\+Server(string port)}{selectServer(string port)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf ts3\+Response} Server\+::select\+Server (
+\begin{DoxyParamCaption}
+\item[{string}]{port}
+\end{DoxyParamCaption}
+)}\hypertarget{class_ts3_api_1_1_server_aa7baa3564ee6d2233f9e9a7f21852b03}{}\label{class_ts3_api_1_1_server_aa7baa3564ee6d2233f9e9a7f21852b03}
+
+
+Selects Ts3 server. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em port} & Ts3 \hyperlink{class_ts3_api_1_1_server}{Server} port\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Data returned from the server 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-bool {\bfseries receiver\+Status} ()\hypertarget{class_ts3_api_1_1_server_a2b21836416769a10006d9e2ef8bfaa74}{}\label{class_ts3_api_1_1_server_a2b21836416769a10006d9e2ef8bfaa74}
-
-\item 
-bool {\bfseries receiver\+Stop} ()\hypertarget{class_ts3_api_1_1_server_adc67fafeac60231d2c979ec16e3f93ae}{}\label{class_ts3_api_1_1_server_adc67fafeac60231d2c979ec16e3f93ae}
-
-\item 
-bool {\bfseries receiver\+Start} ()\hypertarget{class_ts3_api_1_1_server_a75c4a1c7de79ac2a444d2880208af2e9}{}\label{class_ts3_api_1_1_server_a75c4a1c7de79ac2a444d2880208af2e9}
-
-\item 
-\hyperlink{struct_ts3_api_1_1ts3_response}{ts3\+Response} {\bfseries execute\+Command} (string command)\hypertarget{class_ts3_api_1_1_server_a3ea16dc4a1a611c444c17b0be04d4f45}{}\label{class_ts3_api_1_1_server_a3ea16dc4a1a611c444c17b0be04d4f45}
-
-\item 
-{\bfseries Server} (const \hyperlink{class_ts3_api_1_1_server}{Server} \&)=delete\hypertarget{class_ts3_api_1_1_server_a8c64ad5021d8978a6cb3ed767b709429}{}\label{class_ts3_api_1_1_server_a8c64ad5021d8978a6cb3ed767b709429}
-
-\item 
-{\bfseries Server} (string ip, string port)\hypertarget{class_ts3_api_1_1_server_a58ee97b7e2b067978cbcdb8a594687f2}{}\label{class_ts3_api_1_1_server_a58ee97b7e2b067978cbcdb8a594687f2}
-
-\item 
-bool {\bfseries connected} ()\hypertarget{class_ts3_api_1_1_server_a947c45de5db2315434a42db1bf024c4c}{}\label{class_ts3_api_1_1_server_a947c45de5db2315434a42db1bf024c4c}
-
-\item 
-\hyperlink{struct_ts3_api_1_1error}{error} {\bfseries get\+Error} ()\hypertarget{class_ts3_api_1_1_server_aaf8438c60bf85b8859d2f3cf2c0ae394}{}\label{class_ts3_api_1_1_server_aaf8438c60bf85b8859d2f3cf2c0ae394}
-
-\item 
-\hyperlink{struct_ts3_api_1_1ts3_response}{ts3\+Response} {\bfseries select\+Server} (string port)\hypertarget{class_ts3_api_1_1_server_aa7baa3564ee6d2233f9e9a7f21852b03}{}\label{class_ts3_api_1_1_server_aa7baa3564ee6d2233f9e9a7f21852b03}
-
-\item 
-\hyperlink{struct_ts3_api_1_1ts3_response}{ts3\+Response} {\bfseries login} (string login, string password)\hypertarget{class_ts3_api_1_1_server_a23702c6673e012c75f5ad884dbc90d4d}{}\label{class_ts3_api_1_1_server_a23702c6673e012c75f5ad884dbc90d4d}
-
-\item 
-\hyperlink{class_ts3_api_1_1_client}{Client} {\bfseries get\+Client\+By\+Clid} (string clid)\hypertarget{class_ts3_api_1_1_server_a99295e7a116284d1622c7313b3a50977}{}\label{class_ts3_api_1_1_server_a99295e7a116284d1622c7313b3a50977}
-
-\item 
-\hyperlink{class_ts3_api_1_1_client}{Client} {\bfseries get\+Client\+By\+Dbid} (string clid)\hypertarget{class_ts3_api_1_1_server_aac64f2aed2eab8efdd1a16e4fac75b67}{}\label{class_ts3_api_1_1_server_aac64f2aed2eab8efdd1a16e4fac75b67}
-
-\item 
-\hyperlink{class_ts3_api_1_1_client}{Client} {\bfseries get\+Client\+By\+Uid} (string clid)\hypertarget{class_ts3_api_1_1_server_abc5ed55f443f831eb6d430876e554bcc}{}\label{class_ts3_api_1_1_server_abc5ed55f443f831eb6d430876e554bcc}
-
-\item 
-\hyperlink{class_ts3_api_1_1_client}{Client} {\bfseries get\+Client\+By\+Nickname} (string nickname)\hypertarget{class_ts3_api_1_1_server_a235d7e5596be98d9dc91fa07b75edcb9}{}\label{class_ts3_api_1_1_server_a235d7e5596be98d9dc91fa07b75edcb9}
-
-\end{DoxyCompactItemize}
-\subsection*{Przyjaciele}
-\begin{DoxyCompactItemize}
-\item 
-class {\bfseries Client}\hypertarget{class_ts3_api_1_1_server_a5db1c99e2c94b26278f3838c85cdb618}{}\label{class_ts3_api_1_1_server_a5db1c99e2c94b26278f3838c85cdb618}
-
-\end{DoxyCompactItemize}
-
-
-Dokumentacja dla tej klasy została wygenerowana z plików\+:\begin{DoxyCompactItemize}
-\item 
-/home/karol/projects/ts3\+A\+P\+Iv2/src/includes/Server.\+hpp\item 
-/home/karol/projects/ts3\+A\+P\+Iv2/src/Server.\+cpp\end{DoxyCompactItemize}
+/home/karol/projects/\+Team\+Speak3-\/\+C-\/\+Query-\/\+A\+P\+I/src/includes/Server.\+hpp\item 
+/home/karol/projects/\+Team\+Speak3-\/\+C-\/\+Query-\/\+A\+P\+I/src/Server.\+cpp\end{DoxyCompactItemize}

@@ -1,12 +1,65 @@
-\hypertarget{class_ts3_api_1_1_group}{}\section{Dokumentacja klasy Ts3\+Api\+:\+:Group}
+\hypertarget{class_ts3_api_1_1_group}{}\section{Ts3\+Api\+:\+:Group Class Reference}
 \label{class_ts3_api_1_1_group}\index{Ts3\+Api\+::\+Group@{Ts3\+Api\+::\+Group}}
-\subsection*{Metody publiczne}
+\subsection*{Public Types}
 \begin{DoxyCompactItemize}
 \item 
-{\bfseries Group} (\hyperlink{class_ts3_api_1_1_server}{Server} \&server, string id)\hypertarget{class_ts3_api_1_1_group_a13b108d520b74048200fef48eecf0d72}{}\label{class_ts3_api_1_1_group_a13b108d520b74048200fef48eecf0d72}
+enum {\bfseries ts3\+Group\+Type} \{ {\bfseries S\+E\+R\+V\+ER} = 1, 
+{\bfseries C\+H\+A\+N\+N\+EL}
+ \}\hypertarget{class_ts3_api_1_1_group_a7af72d30cc6efe10cbc3986c69393d1f}{}\label{class_ts3_api_1_1_group_a7af72d30cc6efe10cbc3986c69393d1f}
 
 \end{DoxyCompactItemize}
-\subsection*{Przyjaciele}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Group} (\hyperlink{class_ts3_api_1_1_server}{Server} \&server, string id, ts3\+Group\+Type group\+Type=S\+E\+R\+V\+ER, bool incomlete\+Init=false)\hypertarget{class_ts3_api_1_1_group_a859bc82d6f410eddcb1b667967ea8c1c}{}\label{class_ts3_api_1_1_group_a859bc82d6f410eddcb1b667967ea8c1c}
+
+\item 
+void {\bfseries update} ()\hypertarget{class_ts3_api_1_1_group_a15613fb52efd859858250ddf52ca6599}{}\label{class_ts3_api_1_1_group_a15613fb52efd859858250ddf52ca6599}
+
+\item 
+\hyperlink{struct_ts3_api_1_1ts3_response}{ts3\+Response} {\bfseries add\+Client} (string clid)\hypertarget{class_ts3_api_1_1_group_a08b9eb877eb0537f8412cc9e0a2000c6}{}\label{class_ts3_api_1_1_group_a08b9eb877eb0537f8412cc9e0a2000c6}
+
+\item 
+\hyperlink{struct_ts3_api_1_1ts3_response}{ts3\+Response} {\bfseries add\+Client} (string dbid, string cid)\hypertarget{class_ts3_api_1_1_group_aef35cfdb68ee7b6f951cafdb407a25a2}{}\label{class_ts3_api_1_1_group_aef35cfdb68ee7b6f951cafdb407a25a2}
+
+\item 
+\hyperlink{struct_ts3_api_1_1ts3_response}{ts3\+Response} {\bfseries add\+Client} (const \hyperlink{class_ts3_api_1_1_client}{Client} \&client)\hypertarget{class_ts3_api_1_1_group_ad9ec5a8edcbe9d19ac76c9bc5a95c0a5}{}\label{class_ts3_api_1_1_group_ad9ec5a8edcbe9d19ac76c9bc5a95c0a5}
+
+\item 
+\hyperlink{struct_ts3_api_1_1ts3_response}{ts3\+Response} {\bfseries delete\+Client} (string clid)\hypertarget{class_ts3_api_1_1_group_af2fd248456d2eb39477ed0ca393746b2}{}\label{class_ts3_api_1_1_group_af2fd248456d2eb39477ed0ca393746b2}
+
+\item 
+\hyperlink{struct_ts3_api_1_1ts3_response}{ts3\+Response} {\bfseries delete\+Client} (const \hyperlink{class_ts3_api_1_1_client}{Client} \&client)\hypertarget{class_ts3_api_1_1_group_a5620f528a41de7b2e91f257c9fccdda9}{}\label{class_ts3_api_1_1_group_a5620f528a41de7b2e91f257c9fccdda9}
+
+\item 
+\hyperlink{struct_ts3_api_1_1ts3_response}{ts3\+Response} {\bfseries add\+Permission} (string name, string value, bool negated=false, bool skip=false)\hypertarget{class_ts3_api_1_1_group_a4289f37b51c8d5d18d1e5e72870760ca}{}\label{class_ts3_api_1_1_group_a4289f37b51c8d5d18d1e5e72870760ca}
+
+\item 
+\hyperlink{struct_ts3_api_1_1ts3_response}{ts3\+Response} {\bfseries add\+Permission} (const \hyperlink{class_ts3_api_1_1_permission}{Permission} \&permission)\hypertarget{class_ts3_api_1_1_group_a3ae23419bd64611d23e8f94b4c381f28}{}\label{class_ts3_api_1_1_group_a3ae23419bd64611d23e8f94b4c381f28}
+
+\item 
+\hyperlink{struct_ts3_api_1_1ts3_response}{ts3\+Response} {\bfseries delete\+Permission} (string name)\hypertarget{class_ts3_api_1_1_group_a0480ce416aab3341fa8277612494f39a}{}\label{class_ts3_api_1_1_group_a0480ce416aab3341fa8277612494f39a}
+
+\item 
+\hyperlink{struct_ts3_api_1_1ts3_response}{ts3\+Response} {\bfseries delete\+Permission} (const \hyperlink{class_ts3_api_1_1_permission}{Permission} \&permission)\hypertarget{class_ts3_api_1_1_group_a1184de4759eed32e05b3d74ea8e57bae}{}\label{class_ts3_api_1_1_group_a1184de4759eed32e05b3d74ea8e57bae}
+
+\item 
+map$<$ string, \hyperlink{class_ts3_api_1_1_permission}{Permission} $>$ {\bfseries get\+Permission\+List} ()\hypertarget{class_ts3_api_1_1_group_ae8bf50dc322f3b246a231533f6175b2f}{}\label{class_ts3_api_1_1_group_ae8bf50dc322f3b246a231533f6175b2f}
+
+\item 
+vector$<$ \hyperlink{class_ts3_api_1_1_client}{Client} $>$ {\bfseries get\+Client\+List} ()\hypertarget{class_ts3_api_1_1_group_a7e622d8f5f4cb60142d3bdfd6e56dc02}{}\label{class_ts3_api_1_1_group_a7e622d8f5f4cb60142d3bdfd6e56dc02}
+
+\item 
+\hyperlink{struct_ts3_api_1_1ts3_response}{ts3\+Response} {\bfseries group\+Copy} (string tgid, string name, string type)\hypertarget{class_ts3_api_1_1_group_a3d84990139842279576b267404eaa2e4}{}\label{class_ts3_api_1_1_group_a3d84990139842279576b267404eaa2e4}
+
+\item 
+\hyperlink{struct_ts3_api_1_1ts3_response}{ts3\+Response} {\bfseries group\+Delete} (bool force=false)\hypertarget{class_ts3_api_1_1_group_a93f76fca6fa2ac41768e119cac191d93}{}\label{class_ts3_api_1_1_group_a93f76fca6fa2ac41768e119cac191d93}
+
+\item 
+\hyperlink{struct_ts3_api_1_1ts3_response}{ts3\+Response} {\bfseries group\+Rename} (string name)\hypertarget{class_ts3_api_1_1_group_aa78c458c7fbb6e940c7d017adcafdefe}{}\label{class_ts3_api_1_1_group_aa78c458c7fbb6e940c7d017adcafdefe}
+
+\end{DoxyCompactItemize}
+\subsection*{Friends}
 \begin{DoxyCompactItemize}
 \item 
 class {\bfseries Client}\hypertarget{class_ts3_api_1_1_group_a5db1c99e2c94b26278f3838c85cdb618}{}\label{class_ts3_api_1_1_group_a5db1c99e2c94b26278f3838c85cdb618}
@@ -20,7 +73,7 @@ class {\bfseries Permission}\hypertarget{class_ts3_api_1_1_group_ad3834bbd6b2c48
 \end{DoxyCompactItemize}
 
 
-Dokumentacja dla tej klasy została wygenerowana z plików\+:\begin{DoxyCompactItemize}
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-/home/karol/projects/ts3\+A\+P\+Iv2/src/includes/Group.\+hpp\item 
-/home/karol/projects/ts3\+A\+P\+Iv2/src/Group.\+cpp\end{DoxyCompactItemize}
+/home/karol/projects/\+Team\+Speak3-\/\+C-\/\+Query-\/\+A\+P\+I/src/includes/Group.\+hpp\item 
+/home/karol/projects/\+Team\+Speak3-\/\+C-\/\+Query-\/\+A\+P\+I/src/Group.\+cpp\end{DoxyCompactItemize}

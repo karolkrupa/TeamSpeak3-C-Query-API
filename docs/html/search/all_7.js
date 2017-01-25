@@ -1,6 +1,7 @@
 var searchData=
 [
-  ['timestamptime',['timestampTime',['../struct_ts3_api_1_1timestamp_time.html',1,'Ts3Api']]],
-  ['transferinfo',['transferInfo',['../struct_ts3_api_1_1_client_1_1transfer_info.html',1,'Ts3Api::Client']]],
-  ['ts3response',['ts3Response',['../struct_ts3_api_1_1ts3_response.html',1,'Ts3Api']]]
+  ['selectserver',['selectServer',['../class_ts3_api_1_1_server.html#aa7baa3564ee6d2233f9e9a7f21852b03',1,'Ts3Api::Server']]],
+  ['server',['Server',['../class_ts3_api_1_1_server.html#a58ee97b7e2b067978cbcdb8a594687f2',1,'Ts3Api::Server']]],
+  ['server',['Server',['../class_ts3_api_1_1_server.html',1,'Ts3Api']]],
+  ['socketdata',['socketData',['../struct_ts3_api_1_1socket_data.html',1,'Ts3Api']]]
 ];

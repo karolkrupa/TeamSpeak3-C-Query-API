@@ -18,29 +18,36 @@ namespace Ts3Api {
   //class Permission;
 
 
-  /** @brief Pozwala odczytać datę zapisaną w formacie timestamp
-   *
-   *  Dzięki tej strukturze możliwa jest konwersja czasu z formatu timestamp na dowolny inny format daty
+  
+  /**
+   * @brief      Contain time in timestamp format
    */
   struct timestampTime {
     string value;
 
-    /** @brief Zwraca zapisaną datę w wybranym formacie
+    /**
+     * @brief      Return date in seleceted format
      *
+     * @param[in]  pattern  The pattern
+     *
+     * @return     For example: 2016-01-12 23.12.54
      */
     string toDate(string pattern = "%Y-%m-%d %H.%M.%S");
 
     timestampTime(string time);
   };
 
-  /** @brief Pozwala na manupulacje wybranym użytkownikiem
-   *
+  /**
+   * @brief      Class for client.
    */
   class Client {
     friend class Permission;
     friend class Group;
+
   public:
-    /// Zbiór indentyfikatorów użytkownika
+    /**
+     * @brief      Contain all user IDs
+     */
     struct IDs {
       string dbid   = "unknown";
       string clid   = "unknown";
@@ -49,15 +56,23 @@ namespace Ts3Api {
       IDs(string clid ="unknown", string uid ="unknown", string dbid = "unknown");
     };
 
-    /// Struktura zawierająca informacje z polecenia query: "clientinfo"
+    /**
+     * @brief      Contain clientInfo data
+     */
     struct clientInfoProperties : public ts3ObjectProperties {
       IDs &ids;
 
+      /**
+       * @brief      Forces to updata data with next get Action
+       */
       void update();
 
       clientInfoProperties(Client::IDs &ids,  Server &server, time_t &updateTime, bool clientListInit);
     };
 
+    /**
+     * @brief      Contain user names
+     */
     struct nickname {
       string value;
       string phonetic;
@@ -65,27 +80,31 @@ namespace Ts3Api {
       nickname(string nickname, string phonetic);
     };
 
-    /** @brief Struktura pozwala na sprawdzenie oraz zmianę wybranej właściwości użytkownika
-    */
+    /**
+     * @brief      Providing possibility to change selected param
+     */
     struct changeableParam {
     private:
-      /// Referencja do właściciela właściwości
       Client &client;
     public:
-      /// Nazwa właściwości
+      /// Parameter name
       string paramName;
-      /// Wartość wybranego parametru
+      /// Prameter value
       string value;
 
       changeableParam(Client &client, string value, string paramName);
 
-      /** @brief Ustawia wybraną właściwośc na wartość parametru value
-       *  @param value Nowa wartość wybranego parametru
-      */
+      /**
+       * @brief      Changes selected param
+       *
+       * @param[in]  value  New param value
+       *
+       * @return     Received data from server
+       */
       ts3Response change(string value);
     };
 
-    /// Zawiera informacje o transferze dengo użytkownika
+    /// Contain user transfer info
     struct transferInfo {
       string month_bytes_uploaded;
       string month_bytes_downloaded;
@@ -93,7 +112,7 @@ namespace Ts3Api {
       string total_bytes_downloaded;
     };
 
-    /// Zawiera informacje o połączeniu danego użykownika
+    /// Contain user connection info
     struct connectionInfo {
       string filetransfer_bandwidth_sent;
       string filetransfer_bandwidth_received;
@@ -120,121 +139,341 @@ namespace Ts3Api {
     string getUid();
 
   public:
-    /** @brief Tworzy nowy obiekt użytkownika
-     *  @param server Obiekt Server z którego pochodzić ma użytkownik
-     *  @param clientIDs Struktura IDs zawierająca conajmniej jeden identyfikator użytkownika
-     *  @param clientListInit Informuje o niepełnych właściwościach użytkownika pochodzących z listy użytkowników
-    */
+    
+    /**
+     * @brief      Creates new User object
+     *
+     * @param      server          Reference to Server object
+     * @param[in]  clientIDs       Struct containing although one ID
+     * @param[in]  clientListInit  Set true if client is creating with incomplete clientInfo property
+     */
     Client(Server& server, IDs clientIDs, bool clientListInit = false);
 
-    /** @brief Wymusza aktualizację informacji o użytkowniku
-     *
-     *  Po wywołaniu tej metody przy następnej próbie pobrania jakiejkolwiek właściwości użytkownika wszystkie informacje zostaną zaaktualizowane
-    */
+    /**
+     * @brief      Forces to updata data with next get Action
+     */
     void update();
 
-    /** @brief Sprawdza czy dany obiekt jest prawidłowy
+    /**
+     * @brief      Checks whether user is succesful created
      *
-     *  Pozwala sprawdzić czy pobrany obiekt użytkownika jest poprawny tzn. zawiera jego identyfikator pozwalający pobrać o nim informacje.<br>
-     *  Jeżeli funkcja zwraca wartość false nie należy używać danego obiektu ponieważ nie będzie on w stanie zwrócić żadnych informacji.<br>
-     *  Zalecane jest wywołanie tej funkcji po pobraniu użytkownika za pomocą getClientByNickname().
-    */
+     * @return     true if client is OK
+     */
     bool good();
 
-    /// Zwraca "Client ID" użytkownika
+    /**
+     * @brief      Gets the client ID
+     *
+     * @return     Client ID
+     */
     property getCLID();
 
-    /// Zwraca "Unique Identifiter" użytkownika
+    /**
+     * @brief      Gets the Client Unique Identifier
+     *
+     * @return     Client UID
+     */
     property getUID();
 
-    /// Zwraca "Database ID" użytkownika
+    /**
+     * @brief      Gets the Client Database ID
+     *
+     * @return     Client DBID
+     */
     property getDBID();
 
-    /// Zwraca "Idle Time" użytkownika
+    /**
+     * @brief      Gets the client idle time.
+     *
+     * @return     Client idle time
+     */
     property getIdleTime();
 
+    /**
+     * @brief      Gets the nickname.
+     *
+     * @return     The nickname.
+     */
     nickname getNickname();
 
+    /**
+     * @brief      Gets the version.
+     *
+     * @return     The version.
+     */
     property getVersion();
 
+    /**
+     * @brief      Gets the version sign.
+     *
+     * @return     The version sign.
+     */
     property getVersionSign();
 
+    /**
+     * @brief      Gets the platform.
+     *
+     * @return     The platform.
+     */
     property getPlatform();
 
+    /**
+     * @brief      Gets the input muted.
+     *
+     * @return     The input muted.
+     */
     bool getInputMuted();
 
+    /**
+     * @brief      Gets the output muted.
+     *
+     * @return     The output muted.
+     */
     bool getOutputMuted();
 
+    /**
+     * @brief      Gets the output only muted.
+     *
+     * @return     The output only muted.
+     */
     bool getOutputOnlyMuted();
 
+    /**
+     * @brief      Gets the input hardware.
+     *
+     * @return     The input hardware.
+     */
     bool getInputHardware();
 
+    /**
+     * @brief      Gets the output hardware.
+     *
+     * @return     The output hardware.
+     */
     bool getOutputHardware();
 
+    /**
+     * @brief      Gets the default channel.
+     *
+     * @return     The default channel.
+     */
     property getDefaultChannel();
 
+    /**
+     * @brief      Gets the meta data.
+     *
+     * @return     The meta data.
+     */
     property getMetaData();
 
+    /**
+     * @brief      Gets the recording status.
+     *
+     * @return     The recording status.
+     */
     bool getRecordingStatus();
 
+    /**
+     * @brief      Gets the security hash.
+     *
+     * @return     The security hash.
+     */
     property getSecurityHash();
 
+    /**
+     * @brief      Gets the login name.
+     *
+     * @return     The login name.
+     */
     property getLoginName();
 
+    /**
+     * @brief      Gets the channel group.
+     *
+     * @return     The channel group.
+     */
     Group getChannelGroup();
 
+    /**
+     * @brief      Gets the channel group id.
+     *
+     * @return     The channel group id.
+     */
     property getChannelGroupID();
 
+    /**
+     * @brief      Gets the server groups.
+     *
+     * @return     The server groups.
+     */
     vector<Group> getServerGroups();
 
+    /**
+     * @brief      Gets the server groups list.
+     *
+     * @return     The server groups list.
+     */
     vector<string> getServerGroupsList();
 
+    /**
+     * @brief      Gets the created time.
+     *
+     * @return     The created time.
+     */
     timestampTime getCreatedTime();
 
+    /**
+     * @brief      Gets the lastconnected time.
+     *
+     * @return     The lastconnected time.
+     */
     timestampTime getLastconnectedTime();
 
+    /**
+     * @brief      Gets the total connections.
+     *
+     * @return     The total connections.
+     */
     property getTotalConnections();
 
+    /**
+     * @brief      Gets the away status.
+     *
+     * @return     The away status.
+     */
     bool getAwayStatus();
 
+    /**
+     * @brief      Gets the away message.
+     *
+     * @return     The away message.
+     */
     property getAwayMessage();
 
-    property getType(); // enum
+    /**
+     * @brief      Gets the type.
+     *
+     * @return     The type.
+     */
+    property getType();
 
+    /**
+     * @brief      Gets the avatar flag.
+     *
+     * @return     The avatar flag.
+     */
     property getAvatarFlag();
 
+    /**
+     * @brief      Gets the talk power.
+     *
+     * @return     The talk power.
+     */
     Permission getTalkPower();
 
+    /**
+     * @brief      Gets the talk request.
+     *
+     * @return     The talk request.
+     */
     property getTalkRequest();
 
+    /**
+     * @brief      Gets the talk request message.
+     *
+     * @return     The talk request message.
+     */
     property getTalkRequestMsg();
 
+    /**
+     * @brief      Gets the description.
+     *
+     * @return     The description.
+     */
     changeableParam getDescription();
 
+    /**
+     * @brief      Gets the talker status.
+     *
+     * @return     The talker status.
+     */
     changeableParam getTalkerStatus();
 
+    /**
+     * @brief      Gets the transfer information.
+     *
+     * @return     The transfer information.
+     */
     transferInfo getTransferInfo();
 
+    /**
+     * @brief      Gets the priority speaker status.
+     *
+     * @return     The priority speaker status.
+     */
     bool getPrioritySpeakerStatus();
 
+    /**
+     * @brief      Gets the needed serverquery view power.
+     *
+     * @return     The needed serverquery view power.
+     */
     Permission getNeededServerqueryViewPower();
 
+    /**
+     * @brief      Gets the default token.
+     *
+     * @return     The default token.
+     */
     property getDefaultToken();
 
+    /**
+     * @brief      Gets the icon identifier.
+     *
+     * @return     The icon identifier.
+     */
     changeableParam getIconId();
 
+    /**
+     * @brief      Gets the channel commander status.
+     *
+     * @return     The channel commander status.
+     */
     changeableParam getChannelCommanderStatus();
 
-    /** @brief Zwraca kraj użytkownika
+    /**
+     * @brief      Gets the country.
+     *
+     * @return     The country.
      */
     property getCountry();
 
+    /**
+     * @brief      Gets the channel group inherit channel id.
+     *
+     * @return     The channel group inherit channel id.
+     */
     property getChannelGroupInheritChannelID();
 
+    /**
+     * @brief      Gets the badges.
+     *
+     * @return     The badges.
+     */
     property getBadges();
 
+    /**
+     * @brief      Gets the base 64 hash client uid.
+     *
+     * @return     The base 64 hash client uid.
+     */
     property getBase64HashClientUID();
 
+    /**
+     * @brief      Gets the connection information.
+     *
+     * @return     The connection information.
+     */
     connectionInfo getConnectionInfo();
 
     ts3Response addGroup(string groupId);
