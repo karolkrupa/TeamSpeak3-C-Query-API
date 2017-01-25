@@ -1,8 +1,8 @@
-# TeamSpeak3-C-Query-API
+# TeamSpeak3-C-Query-API [![Build Status](http://e-bot.eu:8080/job/TeamSpeak3-C-Query-API/badge/icon?style=flat)](http://e-bot.eu:8080/job/TeamSpeak3-C-Query-API/)
 API who provide functions for operations on ts3 server
 
 ## Building
-``mkdir build && cd build && cmake .. && make``
+``mkdir build && cd build && cmake .. && make``  
 
 ## First steps with API
 At the beginning, you must inclue API to your projec.
