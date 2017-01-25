@@ -63,7 +63,7 @@ namespace Ts3Api {
        * 
        * @see ts3Response
        */
-      ts3Response newValue(string value);
+      ts3Response change(string value);
     };
 
 
@@ -112,6 +112,8 @@ namespace Ts3Api {
 
   public:
     Channel(Server &server, string id, bool incomleteInit = false);
+
+    bool good();
 
     /**
     * @brief      Forces to updata data with next get Action

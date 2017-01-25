@@ -2,7 +2,34 @@
 
 using namespace Ts3Api;
 
-Server::Server(string ip, string port) {
+
+Server::serverChangeableParam::serverChangeableParam(Server* server, string name, string value) :
+  server(server)
+{
+  this->name = name;
+  this->value = value;
+}
+
+ts3Response Server::serverChangeableParam::change(string value) {
+  if(server == NULL) return ts3Response();
+  return server->executeCommand("serveredit "+name+"="+value);
+}
+
+void Server::serverInfoProperties::update() {
+  auto response = server.executeCommand("serverinfo");
+
+  if(!response.error) data = response.data;
+}
+
+
+
+
+
+
+
+Server::Server(string ip, string port) :
+  serverInfo(serverInfoProperties(*this, updateTime))
+{
   connection[0] = ip;
   connection[1] = port;
 
@@ -21,11 +48,25 @@ Server::Server(string ip, string port) {
   */
 }
 
+Server::Server() :
+  serverInfo(serverInfoProperties(*this, updateTime))
+{
+
+}
+
+
 
 
 Server::~Server() {
   receiverStop();
   close(sock);
+}
+
+bool Server::serverConnect(string ip, string port) {
+  connection[0] = ip;
+  connection[1] = port;
+
+  return connectToServer();
 }
 
 bool Server::connectToServer() {
@@ -361,6 +402,7 @@ ts3Response Server::login(string login, string password) {
 }
 
 ts3Response Server::selectServer(string port) {
+  connection[3] = port;
   return executeCommand("use port="+port);
 }
 
@@ -396,4 +438,286 @@ Group Server::getChannelGroupByName(string name) {
     return Group(*this, groupList[name]["cgid"], Group::CHANNEL);
   else
     return Group(*this, "unknown");
+}
+
+map<string, Server> Server::getServerList() {
+  map<string, map<string, string>> serverList;
+  map<string, Server> returnedMap;
+  ts3Response response;
+
+  if(response.error) return returnedMap;
+
+  split(serverList, response.data, "virtualserver_id");
+
+  for(auto it = serverList.begin(); it != serverList.end(); ++it) {
+    returnedMap[it->first].serverConnect(connection[0], connection[1]);
+    returnedMap[it->first].selectServer(it->second["virtualserver_port"]);
+  }
+
+  return returnedMap;
+}
+
+void Server::update() {
+  updateTime = time(NULL);
+}
+
+ts3Response Server::serverDelete(string id) {
+  if(id == "") id = serverInfo.getProperty("virtualserver_id").value;
+
+  return executeCommand("serverdelete sid="+id);
+}
+
+ts3Response Server::serverCreate(map<string, string> serverProperties) {
+  string command = "servercreate";
+
+  for(auto it = serverProperties.begin(); it != serverProperties.end(); ++it) {
+    command += " " + it->first + "=" + messageEncode(it->second);
+  }
+
+  return executeCommand(command);
+}
+
+ts3Response Server::serverStart(string id) {
+  if(id == "") id = serverInfo.getProperty("virtualserver_id").value;
+
+  return executeCommand("serverstart sid="+id);
+}
+
+ts3Response Server::serverStop(string id) {
+  if(id == "") id = serverInfo.getProperty("virtualserver_id").value;
+
+  return executeCommand("serverstop sid="+id);
+}
+
+ts3Response Server::serverProcessStop() {
+  return executeCommand("serverprocessstop");
+}
+
+property Server::getUID() {
+  return serverInfo.getProperty("virtualserver_unique_identifier");
+}
+
+Server::serverNameProperties Server::getName() {
+  serverNameProperties props;
+  props.name = serverChangeableParam(this, "virtualserver_name", serverInfo.getProperty("virtualserver_name").value);
+  props.phonetic = serverChangeableParam(this, "virtualserver_name_phonetic", serverInfo.getProperty("virtualserver_name_phonetic").value);
+
+  return props;
+}
+Server::serverChangeableParam Server::getWelcomeMessage() {
+  return serverChangeableParam(this, "virtualserver_welcomemessage", serverInfo.getProperty("virtualserver_welcomemessage").value);
+}
+property Server::getPlatform() {
+  return serverInfo.getProperty("virtualserver_platform");
+}
+property Server::getVersion() {
+  return serverInfo.getProperty("virtualserver_version");
+}
+Server::serverChangeableParam Server::getMaxClients() {
+  return serverChangeableParam(this, "virtualserver_maxclients", serverInfo.getProperty("virtualserver_maxclients").value);
+}
+Server::serverChangeableParam Server::getPassword() {
+  return serverChangeableParam(this, "virtualserver_password", serverInfo.getProperty("virtualserver_password").value);
+}
+Server::serverClientsOnlineProperties Server::getClientsOnline() {
+  serverClientsOnlineProperties props;
+  props.normal = serverInfo.getProperty("virtualserver_clientsonline").value;
+  props.query = serverInfo.getProperty("virtualserver_queryclientsonline").value;
+
+  return props;
+}
+property Server::getChannelsOnline() {
+  return serverInfo.getProperty("virtualserver_channelsonline");
+}
+property Server::getCreatedTime() {
+  return serverInfo.getProperty("virtualserver_created");
+}
+property Server::getUptime() {
+  return serverInfo.getProperty("virtualserver_uptime");
+}
+Server::serverChangeableParam Server::getCodecEncryptionMode() {
+  return serverChangeableParam(this, "virtualserver_codec_encryption_mode", serverInfo.getProperty("virtualserver_codec_encryption_mode").value);
+}
+Server::serverChangeableParam Server::getHostMessage() {
+  return serverChangeableParam(this, "virtualserver_hostmessage", serverInfo.getProperty("virtualserver_hostmessage").value);
+}
+Server::serverChangeableParam Server::getHostMessageMode() {
+  return serverChangeableParam(this, "virtualserver_hostmessage_mode", serverInfo.getProperty("virtualserver_hostmessage_mode").value);
+}
+property Server::getFileBase() {
+  return serverInfo.getProperty("virtualserver_filebase");
+}
+Server::serverChangeableParam Server::getDefaultServerGroup() {
+  return serverChangeableParam(this, "virtualserver_default_server_group", serverInfo.getProperty("virtualserver_default_server_group").value);
+}
+Server::serverChangeableParam Server::getDefaultChannelGroup() {
+  return serverChangeableParam(this, "virtualserver_default_channel_group", serverInfo.getProperty("virtualserver_default_channel_group").value);
+}
+Server::serverChangeableParam Server::getPasswordFlag() {
+  return serverChangeableParam(this, "virtualserver_flag_password", serverInfo.getProperty("virtualserver_flag_password").value);
+}
+Server::serverChangeableParam Server::getDefaultChannelAdminGroup() {
+  return serverChangeableParam(this, "virtualserver_default_channel_admin_group", serverInfo.getProperty("virtualserver_default_channel_admin_group").value);
+}
+
+Server::serverChangeableParam Server::getHostBannerURL() {
+  return serverChangeableParam(this, "virtualserver_hostbanner_url", serverInfo.getProperty("virtualserver_hostbanner_url").value);
+}
+Server::serverChangeableParam Server::getHostBannerGfxURL() {
+  return serverChangeableParam(this, "virtualserver_hostbanner_gfx_url", serverInfo.getProperty("virtualserver_hostbanner_gfx_url").value);
+}
+Server::serverChangeableParam Server::getHostBannerGfxInterval() {
+  return serverChangeableParam(this, "virtualserver_hostbanner_gfx_interval", serverInfo.getProperty("virtualserver_hostbanner_gfx_interval").value);
+}
+Server::serverComplainSettings Server::getComplainSettings() {
+  serverComplainSettings props;
+  props.autoban_count = serverChangeableParam(this, "virtualserver_complain_autoban_count", serverInfo.getProperty("virtualserver_complain_autoban_count").value);
+  props.autoban_time = serverChangeableParam(this, "virtualserver_complain_autoban_time", serverInfo.getProperty("virtualserver_complain_autoban_time").value);
+  props.remove_time = serverChangeableParam(this, "virtualserver_complain_remove_time", serverInfo.getProperty("virtualserver_complain_remove_time").value);
+
+  return props;
+}
+Server::serverChangeableParam Server::getMinClientsInChannelBeforeSilence() {
+  return serverChangeableParam(this, "virtualserver_min_clients_in_channel_before_forced_silence", serverInfo.getProperty("virtualserver_min_clients_in_channel_before_forced_silence").value);
+}
+Server::serverChangeableParam Server::getPrioritySpeakerDimmModificator() {
+  return serverChangeableParam(this, "virtualserver_priority_speaker_dimm_modificator", serverInfo.getProperty("virtualserver_priority_speaker_dimm_modificator").value);
+}
+property Server::getServerID() {
+  return serverInfo.getProperty("virtualserver_id");
+}
+Server::serverAntifolldSettings Server::getAntifloodSettings() {
+  serverAntifolldSettings props;
+  props.points_tick_reduce = serverChangeableParam(this, "virtualserver_antiflood_points_tick_reduce", serverInfo.getProperty("virtualserver_antiflood_points_tick_reduce").value);
+  props.points_tick_reduce = serverChangeableParam(this, "virtualserver_antiflood_points_needed_command_block", serverInfo.getProperty("virtualserver_antiflood_points_needed_command_block").value);
+  props.points_tick_reduce = serverChangeableParam(this, "virtualserver_antiflood_points_needed_ip_block", serverInfo.getProperty("virtualserver_antiflood_points_needed_ip_block").value);
+
+  return props;
+}
+property Server::getClientConnections() {
+  return serverInfo.getProperty("virtualserver_client_connections");
+}
+property Server::getQueryClientConnections() {
+  return serverInfo.getProperty("virtualserver_query_client_connections");
+}
+Server::serverHostButtonSettings Server::getHostbuttonSettings() {
+  serverHostButtonSettings props;
+  props.tooltip = serverChangeableParam(this, "virtualserver_hostbutton_tooltip", serverInfo.getProperty("virtualserver_hostbutton_tooltip").value);
+  props.url = serverChangeableParam(this, "virtualserver_hostbutton_url", serverInfo.getProperty("virtualserver_hostbutton_url").value);
+  props.gfx_url = serverChangeableParam(this, "virtualserver_hostbutton_gfx_url", serverInfo.getProperty("virtualserver_hostbutton_gfx_url").value);
+
+  return props;
+}
+
+Server::serverTransferSettings Server::getTransferSettings() {
+  serverTransferSettings props;
+  props.download_quota = serverChangeableParam(this, "virtualserver_download_quota", serverInfo.getProperty("virtualserver_download_quota").value);
+  props.upload_quota = serverChangeableParam(this, "virtualserver_upload_quota", serverInfo.getProperty("virtualserver_upload_quota").value);
+
+  return props;
+}
+Server::serverTransferProperties Server::getTransferInfo() {
+  serverTransferProperties props;
+  props.month_bytes_downloaded = serverInfo.getProperty("virtualserver_month_bytes_downloaded").value;
+  props.month_bytes_uploaded = serverInfo.getProperty("virtualserver_month_bytes_uploaded").value;
+  props.total_bytes_downloaded = serverInfo.getProperty("virtualserver_total_bytes_downloaded").value;
+  props.total_bytes_uploaded = serverInfo.getProperty("virtualserver_total_bytes_uploaded").value;
+
+  return props;
+}
+Server::serverChangeableParam Server::getPort() {
+  return serverChangeableParam(this, "virtualserver_port", serverInfo.getProperty("virtualserver_port").value);
+}
+Server::serverChangeableParam Server::getAutostart() {
+  return serverChangeableParam(this, "virtualserver_autostart", serverInfo.getProperty("virtualserver_autostart").value);
+}
+property Server::getMachineID() {
+  return serverInfo.getProperty("virtualserver_machine_id");
+}
+Server::serverChangeableParam Server::getNeededIdentitySecurityLevel() {
+  return serverChangeableParam(this, "virtualserver_needed_identity_security_level", serverInfo.getProperty("virtualserver_needed_identity_security_level").value);
+}
+Server::serverLogSettings Server::getServerLogSettings() {
+  serverLogSettings props;
+  props.log_client = serverChangeableParam(this, "virtualserver_log_client", serverInfo.getProperty("virtualserver_log_client").value);
+  props.log_query = serverChangeableParam(this, "virtualserver_log_query", serverInfo.getProperty("virtualserver_log_query").value);
+  props.log_channel = serverChangeableParam(this, "virtualserver_log_channel", serverInfo.getProperty("virtualserver_log_channel").value);
+  props.log_permissions = serverChangeableParam(this, "virtualserver_log_permissions", serverInfo.getProperty("virtualserver_log_permissions").value);
+  props.log_server = serverChangeableParam(this, "virtualserver_log_server", serverInfo.getProperty("virtualserver_log_server").value);
+  props.log_filetransfer = serverChangeableParam(this, "virtualserver_log_filetransfer", serverInfo.getProperty("virtualserver_log_filetransfer").value);
+
+  return props;
+}
+Server::serverChangeableParam Server::getIconID() {
+  return serverChangeableParam(this, "virtualserver_icon_id", serverInfo.getProperty("virtualserver_icon_id").value);
+}
+Server::serverChangeableParam Server::getReservedSlots() {
+  return serverChangeableParam(this, "virtualserver_reserved_slots", serverInfo.getProperty("virtualserver_reserved_slots").value);
+} 
+Server::serverPacketLossProperties Server::getPacketlossStatus() {
+  serverPacketLossProperties props;
+  props.speech = serverInfo.getProperty("virtualserver_total_packetloss_speech").value;
+  props.keepalive = serverInfo.getProperty("virtualserver_total_packetloss_keepalive").value;
+  props.control = serverInfo.getProperty("virtualserver_total_packetloss_control").value;
+  props.total = serverInfo.getProperty("virtualserver_total_packetloss_total").value;
+
+  return props;
+}
+property Server::getPing() {
+  return serverInfo.getProperty("virtualserver_total_ping");
+}
+property Server::getIP() {
+  return serverInfo.getProperty("virtualserver_ip");
+}
+Server::serverChangeableParam Server::getWeblistEnabled() {
+  return serverChangeableParam(this, "virtualserver_weblist_enabled", serverInfo.getProperty("virtualserver_weblist_enabled").value);
+}
+property Server::getAskForPrivilegekey() {
+  return serverInfo.getProperty("virtualserver_weblist_enabled");
+}
+Server::serverChangeableParam Server::getHostbannerMode() {
+  return serverChangeableParam(this, "virtualserver_hostbanner_mode", serverInfo.getProperty("virtualserver_hostbanner_mode").value);
+}
+Server::serverChangeableParam Server::getTemporaryChannelDeleteDelay() {
+  return serverChangeableParam(this, "virtualserver_channel_temp_delete_delay_default", serverInfo.getProperty("virtualserver_channel_temp_delete_delay_default").value);
+}
+Server::serverClientsMinimumVersion Server::getClientsMinimumVersion() {
+  serverClientsMinimumVersion props;
+  props.android = serverChangeableParam(this, "virtualserver_min_android_version", serverInfo.getProperty("virtualserver_min_android_version").value);
+  props.ios = serverChangeableParam(this, "virtualserver_min_ios_version", serverInfo.getProperty("virtualserver_min_ios_version").value);
+  props.pc = serverChangeableParam(this, "virtualserver_min_client_version", serverInfo.getProperty("virtualserver_min_client_version").value);
+
+  return props;
+}
+property Server::getStatus() {
+  return serverInfo.getProperty("virtualserver_status");
+}
+Server::serverConnectionProperties Server::getConnectionInfo() {
+  serverConnectionProperties props;
+  props.filetransfer_bandwidth_sent = serverInfo.getProperty("connection_filetransfer_bandwidth_sent").value;
+  props.filetransfer_bandwidth_received = serverInfo.getProperty("connection_filetransfer_bandwidth_received").value;
+  props.filetransfer_bytes_sent_total = serverInfo.getProperty("connection_filetransfer_bytes_sent_total").value;
+  props.filetransfer_bytes_received_total = serverInfo.getProperty("connection_filetransfer_bytes_received_total").value;
+  props.packets_sent_speech = serverInfo.getProperty("connection_packets_sent_speech").value;
+  props.bytes_sent_speech = serverInfo.getProperty("connection_bytes_sent_speech").value;
+  props.packets_received_speech = serverInfo.getProperty("connection_packets_received_speech").value;
+  props.bytes_received_speech = serverInfo.getProperty("connection_bytes_received_speech").value;
+  props.packets_sent_keepalive = serverInfo.getProperty("connection_packets_sent_keepalive").value;
+  props.bytes_sent_keepalive = serverInfo.getProperty("connection_bytes_sent_keepalive").value;
+  props.packets_received_keepalive = serverInfo.getProperty("connection_packets_received_keepalive").value;
+  props.bytes_received_keepalive = serverInfo.getProperty("connection_bytes_received_keepalive").value;
+  props.packets_sent_control = serverInfo.getProperty("connection_packets_sent_control").value;
+  props.bytes_sent_control = serverInfo.getProperty("connection_bytes_sent_control").value;
+  props.packets_received_control = serverInfo.getProperty("connection_packets_received_control").value;
+  props.bytes_received_control = serverInfo.getProperty("connection_bytes_received_control").value;
+  props.packets_sent_total = serverInfo.getProperty("connection_packets_sent_total").value;
+  props.bytes_sent_total = serverInfo.getProperty("connection_bytes_sent_total").value;
+  props.packets_received_total = serverInfo.getProperty("connection_packets_received_total").value;
+  props.bytes_received_total = serverInfo.getProperty("connection_bytes_received_total").value;
+  props.bandwidth_sent_last_second_total = serverInfo.getProperty("connection_bandwidth_sent_last_second_total").value;
+  props.bandwidth_sent_last_minute_total = serverInfo.getProperty("connection_bandwidth_sent_last_minute_total").value;
+  props.bandwidth_received_last_second_total = serverInfo.getProperty("connection_bandwidth_received_last_second_total").value;
+  props.bandwidth_received_last_minute_total = serverInfo.getProperty("connection_bandwidth_received_last_minute_total").value;
+
+  return props;
 }

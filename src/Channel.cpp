@@ -6,6 +6,15 @@ Channel::channelInfoProperties::channelInfoProperties(string &id, Server& server
 
 }
 
+bool Channel::good() {
+  auto response = server.executeCommand("channelinfo cid="+id);
+
+  if(response.error) return false;
+
+  channelInfo.data = response.data;
+  return true;
+}
+
 Channel::channelChangeableParam::channelChangeableParam(Channel *channel, string name, string value) :
   channel(channel)
 {
@@ -13,7 +22,7 @@ Channel::channelChangeableParam::channelChangeableParam(Channel *channel, string
   this->value = value;
 }
 
-ts3Response Channel::channelChangeableParam::newValue(string value) {
+ts3Response Channel::channelChangeableParam::change(string value) {
   if(channel != NULL)
     return channel->server.executeCommand("channeledit cid="+channel->id+" "+name+"="+messageEncode(value));
   else
