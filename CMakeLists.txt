@@ -27,3 +27,18 @@ add_executable(TeamSpeak-c-api ${SRCS})
 target_link_libraries(teamspeak-api pthread)
 target_link_libraries(TeamSpeak-c-api pthread)
 target_link_libraries(TeamSpeak-c-api teamspeak-api)
+
+# Unit Tests
+enable_testing()
+
+
+add_executable(Test unitTests/connection_test.cpp)
+target_link_libraries(Test teamspeak-api)
+target_link_libraries(Test pthread)
+
+add_executable(split_tools_test unitTests/split_tools_test.cpp)
+target_link_libraries(split_tools_test teamspeak-api)
+target_link_libraries(split_tools_test pthread)
+
+add_test(NAME Connection_test COMMAND Test)
+add_test(NAME split_tools_test COMMAND split_tools_test)

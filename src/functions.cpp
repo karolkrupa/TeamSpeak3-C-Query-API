@@ -1,4 +1,5 @@
 #include <functions.hpp>
+#include <iostream>
 
 using namespace Ts3Api;
 
@@ -41,42 +42,44 @@ void Ts3Api::split(map<string, string> &returnedMap, string input) {
   string buff;
   input += " ";
 
-  while((gapPos = input.find(" ", gapPos+1)) != string::npos) {
-    if(prevGapPos != 0) prevGapPos++;
-    buff = input.substr(prevGapPos, gapPos-prevGapPos);
-    if((dividerPos = buff.find("=")) != string::npos) {
-      returnedMap[buff.substr(0, dividerPos)] = messageDecode(buff.substr(dividerPos+1, string::npos));
+  while((gapPos = input.find(" ", prevGapPos)) != string::npos) {
+    if(gapPos == (prevGapPos+1)) {
+      prevGapPos = gapPos+1;
+      continue;
     }
-    prevGapPos = gapPos;
+
+    buff = input.substr(prevGapPos, gapPos-prevGapPos);
+
+    if((dividerPos = buff.find("=")) == string::npos) {
+      returnedMap[buff] = "unknown";
+    }else {
+      if(dividerPos == (buff.length()-1)) {
+        returnedMap[buff.substr(0, buff.length()-1)] = "unknown";
+      }else {
+        returnedMap[buff.substr(0, dividerPos)] = buff.substr(dividerPos+1, string::npos);
+      }
+    }
+
+    prevGapPos = gapPos+1;
   }
 }
 
 void Ts3Api::split(map<string, map<string, string>> &returnedMap, string input, string mapIndex) {
   size_t pos = 0, prevPos = 0;
-  map<string, string> bufferMap;
+  map<string, string> buffMap;
   int index = 0;
   input += "|";
 
-  while((pos = input.find("|", pos+1)) != string::npos) {
-    if(prevPos != 0) prevPos++;
+  while((pos = input.find("|", prevPos)) != string::npos) {
+    split(buffMap, input.substr(prevPos, pos-prevPos));
 
-    split(bufferMap, input.substr(prevPos, pos-prevPos));
 
-    if(mapIndex != "intiger") {
-      if(index == 0) {
-        if(bufferMap.find(mapIndex) == bufferMap.end()) {
-          mapIndex = "intiger";
-          returnedMap[to_string(index)] = bufferMap;
-        }
-      }else {
-        index++;
-        if(bufferMap.find(mapIndex) == bufferMap.end()) continue;
-
-        returnedMap[bufferMap[mapIndex]] = bufferMap;
-      }
-    }else {
-      returnedMap[to_string(index)] = bufferMap;
-      index++;
-    }
+    if(mapIndex == "intiger") 
+      returnedMap[to_string(index)] = buffMap;
+    else if(buffMap.find(mapIndex) != buffMap.end())
+        returnedMap[buffMap[mapIndex]] = buffMap;
+    
+    prevPos = pos+1;
+    index++;
   }
 }
