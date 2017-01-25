@@ -355,8 +355,8 @@ bool Server::receiverStart() {
 }
 
 ts3Response Server::executeCommand(string command) {
+  mtx.lock();
   if(receiverStatus()) {
-    mtx.lock();
     receiverLastMsg = ts3Response();
     sendData(command);
 
@@ -367,7 +367,9 @@ ts3Response Server::executeCommand(string command) {
     return localResponse;
   }else {
     sendData(command);
-    return getNormalData();
+    auto response =  getNormalData();
+    mtx.unlock();
+    return response;
   }
 }
 
