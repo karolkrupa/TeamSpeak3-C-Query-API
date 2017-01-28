@@ -1,6 +1,6 @@
 var NAVTREE =
 [
-  [ "TeamSpeak-C-Query-API", "index.html", [
+  [ "TeamSpeak3-C-Query-API", "index.html", [
     [ "Namespaces", null, [
       [ "Namespace List", "namespaces.html", "namespaces" ]
     ] ],
@@ -10,7 +10,7 @@ var NAVTREE =
       [ "Class Hierarchy", "hierarchy.html", "hierarchy" ],
       [ "Class Members", "functions.html", [
         [ "All", "functions.html", "functions_dup" ],
-        [ "Functions", "functions_func.html", null ],
+        [ "Functions", "functions_func.html", "functions_func" ],
         [ "Variables", "functions_vars.html", null ],
         [ "Enumerations", "functions_enum.html", null ],
         [ "Enumerator", "functions_eval.html", null ]
@@ -25,7 +25,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "_channel_8hpp_source.html",
-"functions_s.html"
+"functions_enum.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

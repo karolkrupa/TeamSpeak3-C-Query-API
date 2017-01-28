@@ -1,0 +1,5 @@
+var searchData=
+[
+  ['permission',['Permission',['../class_ts3_api_1_1_permission.html#a9221fabc6bf6dc1b58913a0ffe82ecb7',1,'Ts3Api::Permission::Permission(Client &amp;client, string permName, string permValue=&quot;unknown&quot;, bool negated=false, bool skip=false)'],['../class_ts3_api_1_1_permission.html#a814fecb8ce80e27b19d88bbbe0cbd06d',1,'Ts3Api::Permission::Permission(Channel &amp;channel, string permName, string permValue=&quot;unknown&quot;, bool negated=false, bool skip=false)'],['../class_ts3_api_1_1_permission.html#a8c46a6ad2f2914417c428e4b78ab7dab',1,'Ts3Api::Permission::Permission(Group &amp;group, PermissionGroupTypes permType, string permName, string permValue=&quot;unknown&quot;, bool negated=false, bool skip=false)'],['../class_ts3_api_1_1_permission.html#a587412da518e7292c4d1b1b0cb97fb4a',1,'Ts3Api::Permission::Permission(Channel &amp;channel, Client &amp;client, string permName, string permValue=&quot;unknown&quot;, bool negated=false, bool skip=false)']]],
+  ['poke',['poke',['../class_ts3_api_1_1_client.html#ace50488f45a5a3c823d81cad5b472c36',1,'Ts3Api::Client']]]
+];
