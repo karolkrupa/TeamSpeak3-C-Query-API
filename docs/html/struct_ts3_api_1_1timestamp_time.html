@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.11"/>
-<title>TeamSpeak3-C-Query-API: Ts3Api::timestampTime Struct Reference</title>
+<title>TeamSpeak-C-Query-API: Ts3Api::timestampTime Struct Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -31,7 +31,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">TeamSpeak3-C-Query-API
+   <div id="projectname">TeamSpeak-C-Query-API
    &#160;<span id="projectnumber">0.1a</span>
    </div>
   </td>
@@ -115,7 +115,7 @@ $(document).ready(function(){initNavTree('struct_ts3_api_1_1timestamp_time.html'
 </div><!--header-->
 <div class="contents">
 
-<p>Pozwala odczytać datę zapisaną w formacie timestamp.  
+<p>Contain time in timestamp format.  
  <a href="struct_ts3_api_1_1timestamp_time.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="_client_8hpp_source.html">Client.hpp</a>&gt;</code></p>
@@ -123,7 +123,7 @@ $(document).ready(function(){initNavTree('struct_ts3_api_1_1timestamp_time.html'
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a39b2ad782e579670bad4888682cab8af"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_ts3_api_1_1timestamp_time.html#a39b2ad782e579670bad4888682cab8af">toDate</a> (string pattern=&quot;%Y-%m-%d %H.%M.%S&quot;)</td></tr>
-<tr class="memdesc:a39b2ad782e579670bad4888682cab8af"><td class="mdescLeft">&#160;</td><td class="mdescRight">Zwraca zapisaną datę w wybranym formacie.  <a href="#a39b2ad782e579670bad4888682cab8af">More...</a><br /></td></tr>
+<tr class="memdesc:a39b2ad782e579670bad4888682cab8af"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return date in seleceted format.  <a href="#a39b2ad782e579670bad4888682cab8af">More...</a><br /></td></tr>
 <tr class="separator:a39b2ad782e579670bad4888682cab8af"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6edd44d64e57b0c27a02701b90054cd4"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6edd44d64e57b0c27a02701b90054cd4"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>timestampTime</b> (string time)</td></tr>
@@ -136,8 +136,7 @@ string&#160;</td><td class="memItemRight" valign="bottom"><b>value</b></td></tr>
 <tr class="separator:a12c07c856dd422e610aeedb4048532b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Pozwala odczytać datę zapisaną w formacie timestamp. </p>
-<p>Dzięki tej strukturze możliwa jest konwersja czasu z formatu timestamp na dowolny inny format daty </p>
+<div class="textblock"><p>Contain time in timestamp format. </p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a class="anchor" id="a39b2ad782e579670bad4888682cab8af"></a>
 <div class="memitem">
@@ -153,7 +152,14 @@ string&#160;</td><td class="memItemRight" valign="bottom"><b>value</b></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Zwraca zapisaną datę w wybranym formacie. </p>
+<p>Return date in seleceted format. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">pattern</td><td>The pattern</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>For example: 2016-01-12 23.12.54 </dd></dl>
 
 </div>
 </div>

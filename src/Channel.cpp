@@ -122,3 +122,33 @@ Channel::channelChangeableParam Channel::getIconId() {
 property Channel::getSecondsEmpty() {
   return channelInfo.getProperty("seconds_empty");
 }
+
+map<string, Permission> Channel::getPermission() {
+	map<string, map<string, string>> permList;
+	map<string, Permission> returnedMap;
+	bool negated, skip;
+
+	auto response = server.executeCommand("channelpermlist cid="+id+" -permsid");
+
+	if(response.error) return returnedMap;
+
+	split(permList, response.data, "permsid");
+
+	if(permList.empty()) return returnedMap;
+
+	for(auto it = permList.begin(); it != permList.end(); ++it) {
+		skip = (it->second["permskip"] == "1")? true : false;
+		negated = (it->second["permnegated"] == "1")? true : false;
+		returnedMap.emplace(it->first, Permission(*this, it->first, it->second["permvalue"], negated, skip));
+	}
+
+	return returnedMap;
+}
+
+ts3Response Channel::addPermission(string permsid, string value, bool negated, bool skip) {
+	return server.executeCommand("channeladdperm cid="+id+" permsid="+permsid+" permvalue="+value+" permnegated="+to_string(negated)+" permskip="+to_string(skip));
+}
+
+ts3Response Channel::editPermission(string permsid, string value, bool negated, bool skip) {
+	return addPermission(permsid, value, negated, skip);
+}

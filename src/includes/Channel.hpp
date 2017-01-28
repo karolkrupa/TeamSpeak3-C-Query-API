@@ -238,5 +238,11 @@ namespace Ts3Api {
      * @return     Channel seconds emptydoxywiz
      */
     property getSecondsEmpty();
+
+    map<string, Permission> getPermission();
+
+    ts3Response addPermission(string permsid, string value, bool negated = false, bool skip = false);
+
+    ts3Response editPermission(string permsid, string value, bool negated = false, bool skip = false);
   };
 }
