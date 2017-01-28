@@ -2,37 +2,40 @@
 
 using namespace Ts3Api;
 
-Permission::Permission(Client &client, string permName, string permValue) :
+Permission::Permission(Client &client, string permName, string permValue, bool negated, bool skip) :
   server(client.server)
 {
   this->type = PermGroupTypeGlobalClient;
   this->client = &client;
   this->name = permName;
   this->value = permValue;
-  updateValue();
+  this->negated = negated;
+  this->skip = skip;
 }
 
-Permission::Permission(Channel &channel, string permName, string permValue) :
+Permission::Permission(Channel &channel, string permName, string permValue, bool negated, bool skip) :
   server(channel.server)
 {
   this->type = PermGroupTypeChannelGroup;
   this->channel = &channel;
   this->name = permName;
   this->value = permValue;
-  updateValue();
+  this->negated = negated;
+  this->skip = skip;
 }
 
-Permission::Permission(Group &group, PermissionGroupTypes permType, string permName, string permValue) :
+Permission::Permission(Group &group, PermissionGroupTypes permType, string permName, string permValue, bool negated, bool skip) :
   server(group.server)
 {
   this->type = permType;
   this->group = &group;
   this->name = permName;
   this->value = permValue;
-  updateValue();
+  this->negated = negated;
+  this->skip = skip;
 }
 
-Permission::Permission(Channel &channel, Client &client, string permName, string permValue) :
+Permission::Permission(Channel &channel, Client &client, string permName, string permValue, bool negated, bool skip) :
   server(client.server)
 {
   this->type = PermGroupTypeChannelClient;
@@ -40,7 +43,8 @@ Permission::Permission(Channel &channel, Client &client, string permName, string
   this->client = &client;
   this->name = permName;
   this->value = permValue;
-  updateValue();
+  this->negated = negated;
+  this->skip = skip;
 }
 
 string Permission::getValue() {

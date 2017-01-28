@@ -15,6 +15,7 @@ namespace Ts3Api {
    */
   class Permission {
     friend class Group;
+    friend class Channel;
   public:
     enum PermissionGroupTypes {
       /// Server group premission
@@ -52,7 +53,7 @@ namespace Ts3Api {
      * @param[in]  permName   The permission name
      * @param[in]  permValue  The permission value
      */
-    Permission(Client &client, string permName, string permValue = "unknown");
+    Permission(Client &client, string permName, string permValue = "unknown", bool negated = false, bool skip = false);
 
     /**
      * @brief      Constructor for channel permission
@@ -61,7 +62,7 @@ namespace Ts3Api {
      * @param[in]  permName   The permission name
      * @param[in]  permValue  The permission value
      */
-    Permission(Channel &channel, string permName, string permValue = "unknown");
+    Permission(Channel &channel, string permName, string permValue = "unknown", bool negated = false, bool skip = false);
 
     /**
      * @brief      Constructor for channel group or server group permission
@@ -71,7 +72,7 @@ namespace Ts3Api {
      * @param[in]  permName   The permission name
      * @param[in]  permValue  The permission value
      */
-    Permission(Group &group, PermissionGroupTypes permType, string permName, string permValue = "unknown");
+    Permission(Group &group, PermissionGroupTypes permType, string permName, string permValue = "unknown", bool negated = false, bool skip = false);
 
     /**
      * @brief      Constructor for channel-client permission
@@ -81,7 +82,7 @@ namespace Ts3Api {
      * @param[in]  permName   The permission name
      * @param[in]  permValue  The permission value
      */
-    Permission(Channel &channel, Client &client, string permName, string permValue = "unknown");
+    Permission(Channel &channel, Client &client, string permName, string permValue = "unknown", bool negated = false, bool skip = false);
 
     /**
      * @brief      Gets the value selected permission
