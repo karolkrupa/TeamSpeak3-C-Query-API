@@ -404,7 +404,7 @@ ts3Response Server::login(string login, string password) {
 }
 
 ts3Response Server::selectServer(string port) {
-  connection[3] = port;
+  connection[2] = port;
   return executeCommand("use port="+port);
 }
 
