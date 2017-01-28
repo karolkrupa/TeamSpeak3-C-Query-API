@@ -6,8 +6,17 @@ using namespace std;
 
 int main() {
   Ts3Api::Server server("e-bot.eu", "10011");
-  server.login("serveradmin", "u++5RvMV");
+  server.login("serveradmin", "PASSWORD");
   server.selectServer("9987");
+  server.setNickname("eBot TRAIL");
+
+
+  auto client = server.getClientByNickname("Exus");
+
+  //cout << client.getChannel().getID() << endl;
+
+
+  /*
 
   //  if(server.receiverStart())
   //    cout << "Receiver Started" << endl;
@@ -46,5 +55,6 @@ int main() {
   // cout << "Poczatek:" << ret.errorMsg << ":Koniec" << endl;
   // if(ret.error) cout << "ERROR" << endl;
   cout << "Koniec" << endl;
+  */
   return 1;
 }

@@ -51,6 +51,9 @@ void Channel::update() {
   updateTime = time(NULL);
 }
 
+string Channel::getID() {
+	return id;
+}
 
 Channel::channelChangeableParam Channel::getPid() {
   return channelChangeableParam(this, "pid" ,channelInfo.getProperty("pid").value);

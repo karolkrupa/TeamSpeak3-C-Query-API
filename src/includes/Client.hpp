@@ -521,7 +521,7 @@ namespace Ts3Api {
      *
      * @return     Data returned from server
      */
-    ts3Response addChannelGroup(string groupId, string channelId);
+    ts3Response setChannelGroup(string groupId, string channelId);
 
     /**
      * @brief      Adds a channel group.
@@ -531,7 +531,7 @@ namespace Ts3Api {
      *
      * @return     Data returned from server
      */
-    ts3Response addChannelGroup(string groupId, const Channel &channel);
+    ts3Response setChannelGroup(string groupId, const Channel &channel);
 
     /**
      * @brief      Adds a channel group.
@@ -541,7 +541,7 @@ namespace Ts3Api {
      *
      * @return     Data returned from server
      */
-    ts3Response addChannelGroup(const Group &group , const Channel &channel);
+    ts3Response setChannelGroup(const Group &group , const Channel &channel);
 
     /**
      * @brief      Adds a channel group.
@@ -551,7 +551,7 @@ namespace Ts3Api {
      *
      * @return     Data returned from server
      */
-    ts3Response addChannelGroup(const Group &group , string channelId);
+    ts3Response setChannelGroup(const Group &group , string channelId);
 
     /**
      * @brief      Gets the permission.
@@ -588,6 +588,15 @@ namespace Ts3Api {
      * @return     Data returned from server
      */
     ts3Response move(string cid, string password = "");
+
+    /**
+     * @brief      Moves user to another channel
+     *
+     * @param      channel  The channel
+     *
+     * @return     Data returned from server
+     */
+    ts3Response move(Channel& channel, string password = "");
 
     /**
      * @brief      Kicks user from channel
@@ -666,5 +675,7 @@ namespace Ts3Api {
      * @return     Data returned from server
      */
     map<string, Permission> getPermissionList();
+
+    Channel getChannel();
   };
 }

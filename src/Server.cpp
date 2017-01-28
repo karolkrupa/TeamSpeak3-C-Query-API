@@ -762,3 +762,11 @@ Group Server::serverGroupCreate(string name, groupDbType type) {
   split(groupID, response.data);
   return Group(*this, groupID["sgid"]);
 }
+
+ts3Response Server::updateProperty(string propertyName, string value) {
+	return executeCommand("clientupdate "+propertyName+"="+messageEncode(value));
+}
+
+ts3Response Server::setNickname(string nickname) {
+	return updateProperty("client_nickname", nickname);
+}

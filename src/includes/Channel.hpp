@@ -125,6 +125,8 @@ namespace Ts3Api {
     */
     void update();
 
+    string getID();
+
     /**
      * @brief      Gets the channel parent ID
      *

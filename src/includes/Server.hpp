@@ -888,6 +888,10 @@ namespace Ts3Api {
      */
     Group serverGroupCreate(string name, groupDbType type = groupRegular);
 
+    ts3Response updateProperty(string propertyName, string value);
+
+    ts3Response setNickname(string nickname);
+
   };
 }
 #endif

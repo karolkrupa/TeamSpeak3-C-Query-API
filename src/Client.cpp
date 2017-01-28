@@ -340,7 +340,7 @@ Ts3Api::ts3Response Client::addGroup(string groupId) {
 }
 
 Ts3Api::ts3Response Client::addGroup(const Group &group) {
-  return server.executeCommand("servergroupaddclient sgid=" + group.id + " cldbid=" + getDbid());
+	return addGroup(group.id);
 }
 
 Ts3Api::ts3Response Client::removeGroup(string groupId) {
@@ -348,23 +348,23 @@ Ts3Api::ts3Response Client::removeGroup(string groupId) {
 }
 
 Ts3Api::ts3Response Client::removeGroup(const Group &group) {
-  return server.executeCommand("servergroupdelclient sgid=" + group.id + " cldbid=" + getDbid());
+	removeGroup(group.id);
 }
 
-Ts3Api::ts3Response Client::addChannelGroup(string groupId, string channelId) {
+Ts3Api::ts3Response Client::setChannelGroup(string groupId, string channelId) {
   return server.executeCommand("setclientchannelgroup cgid=" + groupId + " cid="+ channelId +" cldbid=" + getDbid());
 }
 
-Ts3Api::ts3Response Client::addChannelGroup(string groupId, const Channel &channel) {
-  return server.executeCommand("setclientchannelgroup cgid=" + groupId + " cid=" + channel.id + "cldbid=" + getDbid());
+Ts3Api::ts3Response Client::setChannelGroup(string groupId, const Channel &channel) {
+	return setChannelGroup(groupId, channel.id);
 }
 
-Ts3Api::ts3Response Client::addChannelGroup(const Group &group , const Channel &channel) {
-  return server.executeCommand("setclientchannelgroup cgid=" + group.id + " cid=" + channel.id + "cldbid=" + getDbid());
+Ts3Api::ts3Response Client::setChannelGroup(const Group &group , const Channel &channel) {
+	return setChannelGroup(group.id, channel.id);
 }
 
-Ts3Api::ts3Response Client::addChannelGroup(const Group &group , string channelId) {
-  return server.executeCommand("setclientchannelgroup cgid=" + group.id + " cid=" + channelId + "cldbid=" + getDbid());
+Ts3Api::ts3Response Client::setChannelGroup(const Group &group , string channelId) {
+	return setChannelGroup(group.id, channelId);
 }
 
 Ts3Api::Permission Client::getPermission(string permName) {
@@ -389,6 +389,10 @@ Ts3Api::ts3Response Client::move(string cid, string password) {
   string command = "clientmove clid="+clientIDs.clid + " cid="+cid;
   if(password != "") command += " cpw="+messageEncode(password);
   return server.executeCommand(command);
+}
+
+Ts3Api::ts3Response Client::move(Channel& channel, string password) {
+	move(channel.id, password);
 }
 
 Ts3Api::ts3Response Client::kickFromChannel(string reason) {
@@ -446,4 +450,8 @@ map<string, Permission> Client::getPermissionList() {
 	}
 
 	return returnedMap;
+}
+
+Channel Client::getChannel() {
+	return Channel(server, clientInfo.getProperty("cid").value);
 }
