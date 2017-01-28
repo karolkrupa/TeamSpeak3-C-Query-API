@@ -476,25 +476,187 @@ namespace Ts3Api {
      */
     connectionInfo getConnectionInfo();
 
+    /**
+     * @brief      Adds a group.
+     *
+     * @param[in]  groupId  The group identifier
+     *
+     * @return     Data returned from server
+     */
     ts3Response addGroup(string groupId);
+
+    /**
+     * @brief      Adds a group.
+     *
+     * @param[in]  group  The group
+     *
+     * @return     Data returned from server
+     */
     ts3Response addGroup(const Group &group);
+
+    /**
+     * @brief      Removes a group.
+     *
+     * @param[in]  groupId  The group identifier
+     *
+     * @return     Data returned from server
+     */
     ts3Response removeGroup(string groupId);
+
+    /**
+     * @brief      Removes a group.
+     *
+     * @param[in]  group  The group
+     *
+     * @return     Data returned from server
+     */
     ts3Response removeGroup(const Group &group);
+
+    /**
+     * @brief      Adds a channel group.
+     *
+     * @param[in]  groupId    The group identifier
+     * @param[in]  channelId  The channel identifier
+     *
+     * @return     Data returned from server
+     */
     ts3Response addChannelGroup(string groupId, string channelId);
+
+    /**
+     * @brief      Adds a channel group.
+     *
+     * @param[in]  groupId  The group identifier
+     * @param[in]  channel  The channel
+     *
+     * @return     Data returned from server
+     */
     ts3Response addChannelGroup(string groupId, const Channel &channel);
+
+    /**
+     * @brief      Adds a channel group.
+     *
+     * @param[in]  group    The group
+     * @param[in]  channel  The channel
+     *
+     * @return     Data returned from server
+     */
     ts3Response addChannelGroup(const Group &group , const Channel &channel);
+
+    /**
+     * @brief      Adds a channel group.
+     *
+     * @param[in]  group      The group
+     * @param[in]  channelId  The channel identifier
+     *
+     * @return     Data returned from server
+     */
     ts3Response addChannelGroup(const Group &group , string channelId);
+
+    /**
+     * @brief      Gets the permission.
+     *
+     * @param[in]  permName  The permission name
+     *
+     * @return     The permission.
+     */
     Permission getPermission(string permName);
+
+    /**
+     * @brief      Deletes server database
+     *
+     * @return     Data returned from server
+     */
     ts3Response dbDelete();
+
+    /**
+     * @brief      Sets the serverquery login.
+     *
+     * @param[in]  loginName  The login name
+     * @param      password   The password
+     *
+     * @return     Data returned from server
+     */
     ts3Response setServerqueryLogin(string loginName, string &password);
+
+    /**
+     * @brief      Moves user to another channel
+     *
+     * @param[in]  cid       The cid
+     * @param[in]  password  The password
+     *
+     * @return     Data returned from server
+     */
     ts3Response move(string cid, string password = "");
+
+    /**
+     * @brief      Kicks user from channel
+     *
+     * @param[in]  reason  The reason
+     *
+     * @return     Data returned from server
+     */
     ts3Response kickFromChannel(string reason);
+
+    /**
+     * @brief      Kicks user from server
+     *
+     * @param[in]  reason  The reason
+     *
+     * @return     Data returned from server
+     */
     ts3Response kickFromServer(string reason);
+
+    /**
+     * @brief      Poke user
+     *
+     * @param[in]  message  The message
+     *
+     * @return     Data returned from server
+     */
     ts3Response poke(string message);
+
+    /**
+     * @brief      Complains the user
+     *
+     * @param[in]  message  The message
+     *
+     * @return     Data returned from server
+     */
     ts3Response complain(string message);
+
+    /**
+     * @brief      Deletes complain
+     *
+     * @param[in]  accuserDbid  The accuser dbid
+     *
+     * @return     Data returned from server
+     */
     ts3Response delComplain(string accuserDbid);
+
+    /**
+     * @brief      Deletes all complains
+     *
+     * @return     Data returned from server
+     */
     ts3Response delAllComplains();
+
+    /**
+     * @brief      Bans user
+     *
+     * @param[in]  banTime  The ban time
+     * @param[in]  reason   The reason
+     *
+     * @return     Data returned from server
+     */
     ts3Response ban(string banTime = "", string reason ="");
+
+    /**
+     * @brief      Sends a message.
+     *
+     * @param[in]  message  The message
+     *
+     * @return     Data returned from server
+     */
     ts3Response sendMessage(string message);
   };
 }

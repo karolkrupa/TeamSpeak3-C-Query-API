@@ -9,6 +9,7 @@ Permission::Permission(Client &client, string permName, string permValue) :
   this->client = &client;
   this->name = permName;
   this->value = permValue;
+  updateValue();
 }
 
 Permission::Permission(Channel &channel, string permName, string permValue) :
@@ -18,6 +19,7 @@ Permission::Permission(Channel &channel, string permName, string permValue) :
   this->channel = &channel;
   this->name = permName;
   this->value = permValue;
+  updateValue();
 }
 
 Permission::Permission(Group &group, PermissionGroupTypes permType, string permName, string permValue) :
@@ -27,6 +29,7 @@ Permission::Permission(Group &group, PermissionGroupTypes permType, string permN
   this->group = &group;
   this->name = permName;
   this->value = permValue;
+  updateValue();
 }
 
 Permission::Permission(Channel &channel, Client &client, string permName, string permValue) :
@@ -37,6 +40,7 @@ Permission::Permission(Channel &channel, Client &client, string permName, string
   this->client = &client;
   this->name = permName;
   this->value = permValue;
+  updateValue();
 }
 
 string Permission::getValue() {
@@ -76,9 +80,13 @@ Ts3Api::ts3Response Permission::updateValue() {
   if(response.error) return response;
 
   size_t pos;
-  if((pos= response.data.find("permsid="+name+" permvalue=")) != string::npos) {
-    pos += string("permsid="+name+" permvalue=").length();
-    value = response.data.substr(pos, response.data.find(" ", pos)-pos);
+  if((pos = response.data.find("permsid="+name)) != string::npos) {
+  	pos = response.data.find("permvalue=", pos)+11;
+  	value = response.data.substr(pos, response.data.find(" ", pos)-pos);
+  	pos = response.data.find("permnegated=", pos)+13;
+  	negated = (response.data.substr(pos, response.data.find(" ", pos)-pos) == "1")? true : false;
+  	pos = response.data.find("permskip=", pos)+10;
+  	skip = (response.data.substr(pos, response.data.find(" ", pos)-pos) == "1")? true : false;
   }else {
     value = "unknown";
   }
