@@ -425,3 +425,25 @@ Ts3Api::ts3Response Client::ban(string banTime, string reason) {
 Ts3Api::ts3Response Client::sendMessage(string message) {
   return server.executeCommand("sendtextmessage targetmode=1 target="+clientIDs.clid+" msg="+messageEncode(message));
 }
+
+map<string, Permission> Client::getPermissionList() {
+	map<string, map<string, string>> permList;
+	map<string, Permission> returnedMap;
+	bool negated , skip;
+
+	auto response = server.executeCommand("clientpermlist cldbid="+clientIDs.dbid+" -permsid");
+
+	if(response.error) return returnedMap;
+
+	split(permList, response.data, "permsid");
+
+	if(permList.empty()) return returnedMap;
+
+	for(auto it = permList.begin(); it != permList.end(); ++it) {
+		negated = (it->second["permnegated"] == "1")? true : false;
+		negated = (it->second["permnegated"] == "1")? true : false;
+		returnedMap.emplace(it->first, Permission(*this, it->first, it->second["permvalue"], negated, skip));
+	}
+
+	return returnedMap;
+}

@@ -43,6 +43,7 @@ namespace Ts3Api {
   class Client {
     friend class Permission;
     friend class Group;
+    friend class Channel;
 
   public:
     /**
@@ -658,5 +659,12 @@ namespace Ts3Api {
      * @return     Data returned from server
      */
     ts3Response sendMessage(string message);
+
+    /**
+     * @brief      Gets all user permissions
+     *
+     * @return     Data returned from server
+     */
+    map<string, Permission> getPermissionList();
   };
 }

@@ -87,14 +87,6 @@ ts3Response Group::deletePermission(const Permission& permission) {
   return deletePermission(permission.name);
 }
 
-map<string, Permission> Group::getPermissionList() {
-  if(groupType == SERVER) {
-
-  }else {
-
-  }
-}
-
 vector<Client> Group::getClientList() {
 
 }
@@ -116,4 +108,41 @@ ts3Response Group::groupRename(string name) {
     return server.executeCommand("servergrouprename sgid="+id+" name="+messageEncode(name));
   else
     return server.executeCommand("channelgrouprename cgid="+id+" name="+messageEncode(name));
+}
+
+Permission Group::getPermission(string permsid) {
+	if(groupType == SERVER)
+		return Permission(*this, Permission::PermGroupTypeServerGroup, permsid);
+	else
+		return Permission(*this, Permission::PermGroupTypeChannelGroup, permsid);
+}
+
+map<string, Permission> Group::getPermissionList() {
+	map<string, map<string, string>> permList;
+	map<string, Permission> returnedMap;
+	bool negated, skip;
+
+	ts3Response response;
+	if(groupType == SERVER)
+		response = server.executeCommand("servergrouppermlist sgid="+id);
+	else
+		response = server.executeCommand("channelgrouppermlist cgid="+id);
+
+	if(response.error) return returnedMap;
+
+	split(permList, response.data, "permsid");
+
+	if(permList.empty()) return returnedMap;
+
+	for (auto it = permList.begin(); it != permList.end(); ++it)
+	{
+		negated = (it->second["permnegated"] == "1")? true : false;
+		skip = (it->second["permskip"] == "1")? true : false;
+		if(groupType == SERVER)
+			returnedMap.emplace(it->first, Permission(*this, Permission::PermGroupTypeServerGroup, it->first, it->second["permvalue"], negated, skip));
+		else
+			returnedMap.emplace(it->first, Permission(*this, Permission::PermGroupTypeChannelGroup, it->first, it->second["permvalue"], negated, skip));
+	}
+
+	return returnedMap;
 }

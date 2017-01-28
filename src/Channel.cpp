@@ -123,7 +123,11 @@ property Channel::getSecondsEmpty() {
   return channelInfo.getProperty("seconds_empty");
 }
 
-map<string, Permission> Channel::getPermission() {
+Permission Channel::getPermission(string permsid) {
+	return Permission(*this, permsid);
+}
+
+map<string, Permission> Channel::getPermissionList() {
 	map<string, map<string, string>> permList;
 	map<string, Permission> returnedMap;
 	bool negated, skip;
@@ -145,10 +149,45 @@ map<string, Permission> Channel::getPermission() {
 	return returnedMap;
 }
 
-ts3Response Channel::addPermission(string permsid, string value, bool negated, bool skip) {
-	return server.executeCommand("channeladdperm cid="+id+" permsid="+permsid+" permvalue="+value+" permnegated="+to_string(negated)+" permskip="+to_string(skip));
+Permission Channel::getClientPermission(string clientDbid, string permsid) {
+	Client::IDs ids;
+
+	ids.dbid = clientDbid;
+
+	return getClientPermission(*(new Client(server, ids)), permsid);
 }
 
-ts3Response Channel::editPermission(string permsid, string value, bool negated, bool skip) {
-	return addPermission(permsid, value, negated, skip);
+Permission Channel::getClientPermission(Client& client, string permsid) {
+	return Permission(*this, client, permsid);
+}
+
+map<string, Permission> Channel::getClientPermissionList(string clientDbid, string permsid) {
+	Client::IDs ids;
+
+	ids.dbid = clientDbid;
+
+	return getClientPermissionList(*(new Client(server, ids)), permsid);
+}
+
+map<string, Permission> Channel::getClientPermissionList(Client& client, string permsid) {
+	map<string, map<string, string>> permList;
+	map<string, Permission> returnedMap;
+	Client::IDs ids;
+	bool negated, skip;
+
+	auto response = server.executeCommand("channelclientpermlist cid="+id+" cldbid="+client.clientIDs.dbid+" -permsid");
+
+	if(response.error) return returnedMap;
+
+	split(permList, response.data, "permsid");
+
+	if(permList.empty()) return returnedMap;
+
+	for(auto it = permList.begin(); it != permList.end(); ++it) {
+		negated = (it->second["permnegated"] == "1")? true : false;
+		skip = (it->second["permskip"] == "1")? true : false;
+		returnedMap.emplace(it->first, Permission(*this, client, it->first, it->second["permvalue"], negated, skip));
+	}
+
+	return returnedMap;
 }

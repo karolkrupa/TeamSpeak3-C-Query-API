@@ -11,6 +11,7 @@ Permission::Permission(Client &client, string permName, string permValue, bool n
   this->value = permValue;
   this->negated = negated;
   this->skip = skip;
+  if(permValue == "unknown") updateValue();
 }
 
 Permission::Permission(Channel &channel, string permName, string permValue, bool negated, bool skip) :
@@ -22,6 +23,7 @@ Permission::Permission(Channel &channel, string permName, string permValue, bool
   this->value = permValue;
   this->negated = negated;
   this->skip = skip;
+  if(permValue == "unknown") updateValue();
 }
 
 Permission::Permission(Group &group, PermissionGroupTypes permType, string permName, string permValue, bool negated, bool skip) :
@@ -33,6 +35,7 @@ Permission::Permission(Group &group, PermissionGroupTypes permType, string permN
   this->value = permValue;
   this->negated = negated;
   this->skip = skip;
+  if(permValue == "unknown") updateValue();
 }
 
 Permission::Permission(Channel &channel, Client &client, string permName, string permValue, bool negated, bool skip) :
@@ -45,6 +48,7 @@ Permission::Permission(Channel &channel, Client &client, string permName, string
   this->value = permValue;
   this->negated = negated;
   this->skip = skip;
+  if(permValue == "unknown") updateValue();
 }
 
 string Permission::getValue() {

@@ -113,6 +113,11 @@ namespace Ts3Api {
   public:
     Channel(Server &server, string id = "unknown", bool incomleteInit = false);
 
+    /**
+     * @brief      Check whether object is well build
+     *
+     * @return     true if OK
+     */
     bool good();
 
     /**
@@ -239,10 +244,60 @@ namespace Ts3Api {
      */
     property getSecondsEmpty();
 
-    map<string, Permission> getPermission();
+    /**
+     * @brief      Gets the permission.
+     *
+     * @param[in]  permsid  The permsid
+     *
+     * @return     The permission.
+     */
+    Permission getPermission(string permsid);
 
-    ts3Response addPermission(string permsid, string value, bool negated = false, bool skip = false);
+    /**
+     * @brief      Gets the permissions
+     *
+     * @return     The permission.
+     */
+    map<string, Permission> getPermissionList();
 
-    ts3Response editPermission(string permsid, string value, bool negated = false, bool skip = false);
+    /**
+     * @brief      Gets the client permission.
+     *
+     * @param[in]  clientDbid  The client dbid
+     * @param[in]  permsid     The permsid
+     *
+     * @return     The client permission.
+     */
+    Permission getClientPermission(string clientDbid, string permsid);
+
+    /**
+     * @brief      Gets the client permission.
+     *
+     * @param      client   The client
+     * @param[in]  permsid  The permsid
+     *
+     * @return     The client permission.
+     */
+    Permission getClientPermission(Client& client, string permsid);
+
+    /**
+     * @brief      Gets the client permission list.
+     *
+     * @param[in]  clientDbid  The client dbid
+     * @param[in]  permsid     The permsid
+     *
+     * @return     The client permission list.
+     */
+    map<string, Permission> getClientPermissionList(string clientDbid, string permsid);
+
+    /**
+     * @brief      Gets the client permission list.
+     *
+     * @param      client   The client
+     * @param[in]  permsid  The permsid
+     *
+     * @return     The client permission list.
+     */
+    map<string, Permission> getClientPermissionList(Client& client, string permsid);
   };
 }

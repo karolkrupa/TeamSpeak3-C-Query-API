@@ -148,13 +148,6 @@ namespace Ts3Api {
     ts3Response deletePermission(const Permission& permission);
 
     /**
-     * @brief      Gets the permission list.
-     *
-     * @return     The permission list.
-     */
-    map<string, Permission> getPermissionList();
-
-    /**
      * @brief      Gets the client list.
      *
      * @return     The client list.
@@ -189,5 +182,21 @@ namespace Ts3Api {
      * @return     Data returned from server
      */
     ts3Response groupRename(string name);
+
+    /**
+     * @brief      Gets the permission.
+     *
+     * @param[in]  permsid  The permsid
+     *
+     * @return     The permission.
+     */
+    Permission getPermission(string permsid);
+
+    /**
+     * @brief      Gets the permission list.
+     *
+     * @return     The permission list.
+     */
+    map<string, Permission> getPermissionList();
   };
 }
