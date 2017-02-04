@@ -292,6 +292,9 @@ namespace Ts3Api {
     bool receiverStart();
 
     public:
+
+    const float api_version = 0.1;
+
     /**
      * @brief      Creating and connectiong connection with Ts3Server
      *

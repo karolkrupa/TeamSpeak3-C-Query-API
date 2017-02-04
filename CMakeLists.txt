@@ -8,7 +8,7 @@ include_directories(
   src/includes
 )
 
-add_library(teamspeak-api STATIC
+add_library(teamspeak-api SHARED
   src/ts3ObjectProperties.cpp
   src/serverStructs.cpp
   src/Server.cpp
